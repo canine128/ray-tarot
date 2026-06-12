@@ -1,7 +1,8 @@
 {
   "name": "Ray Tarot",
   "short_name": "Ray Tarot",
-  "start_url": "/",
+  "start_url": "/ray-tarot/",
+  "scope": "/ray-tarot/",
   "display": "standalone",
   "background_color": "#F5EFE6",
   "theme_color": "#C9A46A",
