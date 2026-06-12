@@ -1,0 +1,15 @@
+{
+  "name": "Ray Tarot",
+  "short_name": "Ray Tarot",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5EFE6",
+  "theme_color": "#C9A46A",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,1031 @@
+html,
+body{
+    min-height:100%;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"Noto Sans TC",sans-serif;
+    background:linear-gradient(180deg,#FAF6F0,#F2E4D5);
+    background-attachment:fixed;
+    color:#5B4636;
+}
+
+.app{
+    max-width:430px;
+    min-height:100dvh;
+    margin:auto;
+    padding:22px;
+    box-sizing:border-box;
+}
+
+.screen{
+    display:none;
+}
+
+.active{
+    display:block;
+}
+
+h1{
+    text-align:center;
+    font-size:36px;
+    margin:10px 0 10px;
+    color:#7A5B42;
+    letter-spacing:1px;
+}
+
+.panel{
+    background:rgba(255,253,249,.96);
+    padding:28px 24px;
+    border-radius:28px;
+    box-shadow:0 14px 35px rgba(120,80,45,.12);
+    border:1px solid #F0DDC5;
+    margin-top:20px;
+}
+
+.panel h2{
+    text-align:center;
+    font-size:30px;
+    margin:0 0 28px;
+    color:#5C4636;
+    letter-spacing:1px;
+}
+
+.panel p{
+    font-size:18px;
+    line-height:1.9;
+    color:#6B5848;
+    margin-bottom:22px;
+}
+
+textarea{
+    width:100%;
+    box-sizing:border-box;
+    min-height:88px;
+    border:none;
+    border-radius:18px;
+    padding:16px;
+    font-size:16px;
+    color:#5B4636;
+    background:#FFF8F0;
+    resize:none;
+    box-shadow:inset 0 0 0 1.5px #E5C99F;
+}
+
+textarea:focus{
+    outline:none;
+    box-shadow:
+        inset 0 0 0 2px #C99B5F,
+        0 0 18px rgba(201,155,95,.2);
+}
+
+button{
+    width:100%;
+    height:58px;
+    border:none;
+    border-radius:22px;
+    padding:16px;
+    margin-top:18px;
+    font-size:20px;
+    color:white;
+    background:linear-gradient(135deg,#DDB986,#C8965F);
+    box-shadow:0 6px 18px rgba(0,0,0,.12);
+}
+
+button:active{
+    transform:scale(.97);
+}
+
+.hint{
+    text-align:center;
+    margin-top:20px;
+    color:#8A7360;
+}
+
+/* 牌陣選擇 */
+
+.spread-grid{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    margin-top:25px;
+}
+
+.spread-card{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:#FFFDF9;
+    padding:24px;
+    border-radius:24px;
+    cursor:pointer;
+    border:1px solid #F0DDC5;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.spread-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 35px rgba(0,0,0,.12);
+}
+
+.spread-card h3{
+    margin:0;
+    font-size:24px;
+    color:#7A5B42;
+}
+
+.spread-card p{
+    margin-top:10px;
+    margin-bottom:0;
+    color:#8B6A4E;
+    font-size:16px;
+}
+
+/* 洗牌 */
+
+.deck-area{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+}
+
+.deck{
+    width:180px;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.deck img{
+    width:100%;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.deck:hover{
+    transform:translateY(-10px);
+}
+
+.shuffle-cards{
+    position:absolute;
+    width:240px;
+    height:240px;
+    left:50%;
+    transform:translateX(-50%);
+    pointer-events:none;
+}
+
+.shuffle-card{
+    position:absolute;
+    width:70px;
+    left:85px;
+    top:25px;
+    opacity:0;
+    animation:realShuffle 1.5s ease forwards;
+}
+
+.shuffle-card img{
+    width:100%;
+    border-radius:10px;
+    box-shadow:0 8px 20px rgba(0,0,0,.18);
+}
+
+.shuffle-card:nth-child(1){ animation-delay:0s; }
+.shuffle-card:nth-child(2){ animation-delay:.08s; }
+.shuffle-card:nth-child(3){ animation-delay:.16s; }
+.shuffle-card:nth-child(4){ animation-delay:.24s; }
+.shuffle-card:nth-child(5){ animation-delay:.32s; }
+.shuffle-card:nth-child(6){ animation-delay:.4s; }
+
+@keyframes realShuffle{
+    0%{
+        opacity:0;
+        transform:translate(0,0) rotate(0deg);
+    }
+
+    25%{
+        opacity:1;
+    }
+
+    55%{
+        opacity:1;
+        transform:translate(var(--x), var(--y)) rotate(var(--r));
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(0,0) rotate(0deg);
+    }
+}
+
+/* 選牌 */
+
+.card-selection{
+    display:grid;
+    grid-auto-flow:column;
+    grid-template-rows:repeat(3, 1fr);
+    grid-auto-columns:72px;
+
+    gap:16px 14px;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    justify-content:flex-start;
+
+    padding:18px 28px 22px;
+    margin-top:25px;
+
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+}
+
+.card-selection::-webkit-scrollbar{
+    display:none;
+}
+
+.select-card{
+    width:58px;
+    transition:.3s;
+    border-radius:12px;
+}
+
+
+.select-card img{
+    width:100%;
+    border-radius:12px;
+}
+
+.select-card:hover{
+    transform:none;
+}
+
+.select-card.selected{
+    opacity:.35;
+    transform:translateY(-10px);
+}
+
+.select-card:not(.selected){
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* 結果：橫向滑動 */
+
+#result{
+    width:100%;
+    overflow:hidden;
+}
+
+.result-cards{
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content:flex-start;
+    gap:12px;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    padding:10px 4px 20px;
+
+    scroll-behavior:smooth;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+}
+
+.s::-webkit-scrollbar{
+    height:6px;
+}
+
+.result-cards::-webkit-scrollbar-thumb{
+    background:#D8B78A;
+    border-radius:999px;
+}
+
+.result-card{
+    border-radius:22px;
+    padding:18px;
+    width:220px;
+    text-align:center;
+    box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+
+.result-card h3{
+    text-align:center;
+    font-size:16px;
+    margin:0 0 10px;
+    color:#6B4F3B;
+}
+
+.result-card img{
+    width:120px;
+    max-width:100%;
+    display:block;
+    margin:0 auto;
+    border-radius:12px;
+}
+
+.result-card p{
+    text-align:center;
+    font-size:14px;
+    line-height:1.5;
+    color:#6B4F3B;
+    margin:10px 0 0;
+}
+
+.reversed{
+    transform:rotate(180deg);
+}
+
+/* AI 解讀框 */
+
+#aiReadingBox{
+    margin-top:25px;
+    background:#FFFDF8;
+    border-radius:24px;
+    padding:20px;
+    text-align:left;
+    line-height:1.9;
+    color:#5B4636;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    display:none;
+}
+
+/* 公告與提醒視窗 */
+
+.notice-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(80,55,35,.35);
+    backdrop-filter:blur(8px);
+    z-index:99999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.notice-box{
+    width:calc(100vw - 40px);
+    max-width:380px;
+    max-height:88vh;
+    overflow-y:auto;
+    background:#FFFDF8;
+    border-radius:28px;
+    padding:26px 22px;
+    box-sizing:border-box;
+    text-align:center;
+    color:#5B4636;
+    box-shadow:0 20px 50px rgba(90,60,35,.22);
+    border:1px solid #E8D1B0;
+}
+
+.notice-box h2{
+    margin:0 0 14px;
+    font-size:24px;
+    color:#7A5B42;
+}
+
+.notice-content{
+    text-align:center;
+}
+
+.notice-content p{
+    margin:8px 0;
+    line-height:1.4;
+    font-size:14px;
+    color:#6B5848;
+}
+
+.notice-box button{
+    margin-top:18px;
+    height:52px;
+    font-size:18px;
+}
+
+.highlight{
+    color:#B8793A;
+    font-weight:700;
+}
+
+.tag{
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:999px;
+    background:#F5E6D3;
+    color:#B8793A;
+    font-weight:700;
+    font-size:13px;
+}
+
+/* 開發者簽名 */
+
+.developer-sign{
+    margin:14px 0 0;
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    color:#D8B26A;
+    -webkit-text-stroke:0.6px #5B4636;
+    text-shadow:0 0 6px rgba(216,178,106,.35);
+}
+
+.developer-sub{
+    margin:2px 0 0;
+    font-size:11px;
+    color:#9A8268;
+    letter-spacing:2px;
+}
+
+.single-card{
+
+    justify-content:center;
+
+}
+
+/* 牌面放大視窗 */
+
+.card-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:999999;
+    background:rgba(35,25,20,.9);
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    box-sizing:border-box;
+    animation:modalFade 1s ease;
+}
+
+.card-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:999999;
+    background:rgba(35,25,20,.9);
+
+    justify-content:center;
+    align-items:center;
+
+    padding:60px 18px 24px;
+    box-sizing:border-box;
+}
+
+.card-modal img{
+
+    max-width:92vw;
+    max-height:82vh;
+
+    width:auto;
+    height:auto;
+
+    object-fit:contain;
+
+    border-radius:18px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+
+    animation:cardReveal 1.8s ease-out;
+
+}
+
+.close-modal{
+
+    position:fixed;
+
+    top:10px;
+    right:10px;
+
+    width:34px;
+    height:34px;
+
+    margin:0;
+    padding:0;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.2);
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    line-height:34px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    z-index:1000000;
+
+    box-shadow:none;
+
+}
+
+/* 聖杯 */
+.cups-card{
+    background:#FFF5F8;
+}
+
+/* 權杖 */
+.wands-card{
+    background:#F4F9FF;
+}
+
+/* 金幣 */
+.pentacles-card{
+    background:#F8F0E6;
+}
+
+/* 寶劍 */
+.swords-card{
+    background:#F3F4F6;
+}
+
+/* 大牌 */
+.major-card{
+    background:#FFF7E3;
+}
+
+
+/* 修正結果卡片寬度 */
+
+.result-card{
+    flex:0 0 150px !important;
+    width:150px !important;
+    padding:14px !important;
+    box-sizing:border-box;
+}
+
+.card-inner{
+    width:100%;
+    box-sizing:border-box;
+    background:#FFFFFF;
+    border-radius:16px;
+    padding:10px;
+}
+
+.result-card h3{
+    font-size:15px;
+    margin:0 0 8px;
+    line-height:1.3;
+    writing-mode:horizontal-tb;
+}
+
+.result-card img{
+    width:110px !important;
+    max-width:100%;
+}
+
+.result-card p{
+    font-size:14px;
+    line-height:1.5;
+    margin:10px 0 0;
+    writing-mode:horizontal-tb;
+}
+
+.slide-hint{
+    text-align:center;
+    margin-top:12px;
+    font-size:14px;
+    font-weight:700;
+    color:#B8793A;
+    opacity:.75;
+    animation:slideHintMove 1.4s ease-in-out infinite;
+}
+
+@keyframes slideHintMove{
+    0%{
+        transform:translateX(0);
+    }
+
+    50%{
+        transform:translateX(8px);
+    }
+
+    100%{
+        transform:translateX(0);
+    }
+}
+
+.swipe-hint{
+
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    background:rgba(0,0,0,.45);
+
+    color:#fff;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    backdrop-filter:blur(8px);
+
+    z-index:999999;
+
+    pointer-events:none;
+
+    white-space:nowrap;
+
+    opacity:0;
+
+    transition:.5s;
+
+}
+
+@keyframes zoomIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.88);
+
+        filter:blur(4px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+        filter:blur(0);
+
+    }
+
+}
+
+@keyframes cardReveal{
+
+    0%{
+
+        opacity:0;
+
+        transform:scale(.7);
+
+        filter:
+        blur(40px)
+        brightness(2);
+
+    }
+
+    30%{
+
+        opacity:.3;
+
+        transform:scale(.82);
+
+        filter:
+        blur(25px)
+        brightness(1.8);
+
+    }
+
+    60%{
+
+        opacity:.7;
+
+        transform:scale(.92);
+
+        filter:
+        blur(12px)
+        brightness(1.4);
+
+    }
+
+    85%{
+
+        opacity:1;
+
+        transform:scale(1.02);
+
+        filter:
+        blur(2px)
+        brightness(1.1);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+        filter:
+        blur(0)
+        brightness(1);
+
+    }
+
+}
+@keyframes glowText{
+
+    0%{
+
+        opacity:.5;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+        text-shadow:
+        0 0 15px rgba(255,215,120,.8);
+
+    }
+
+    100%{
+
+        opacity:.5;
+
+    }
+
+}
+
+.share-card{
+    position:fixed;
+    left:-9999px;
+    top:0;
+
+    width:1080px;
+    min-height:1350px;
+
+    padding:70px 64px;
+
+    background:linear-gradient(180deg,#FAF6F0,#F1E2D2);
+    color:#5B4636;
+
+    box-sizing:border-box;
+    text-align:center;
+
+    overflow:hidden;
+}
+
+.share-card h2{
+    font-size:54px;
+    margin:0 0 42px;
+    color:#7A5B42;
+}
+
+.share-question{
+    background:#FFFDF8;
+    border-radius:30px;
+    padding:28px 34px;
+    margin-bottom:48px;
+
+    font-size:30px;
+    line-height:1.6;
+
+    box-shadow:0 12px 35px rgba(90,60,35,.12);
+}
+
+.share-cards{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:22px;
+    flex-wrap:wrap;
+}
+
+.share-card-item{
+    width:230px;
+
+    background:#FFFDF8;
+    border-radius:30px;
+    padding:20px 16px 24px;
+
+    box-shadow:0 14px 35px rgba(90,60,35,.14);
+}
+
+.share-card-item h3{
+    font-size:30px;
+    margin:0 0 20px;
+    color:#6B4F3B;
+}
+
+.share-card-item img{
+    width:175px;
+    border-radius:18px;
+}
+
+.share-card-item p{
+    font-size:26px;
+    line-height:1.5;
+    margin:20px 0 0;
+    color:#5B4636;
+}
+
+.share-watermark{
+    position:absolute;
+    top:52%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    font-size:92px;
+    font-weight:900;
+
+    color:rgba(184,121,58,.07);
+
+    pointer-events:none;
+    white-space:nowrap;
+}
+
+#imagePreviewModal{
+    position:fixed;
+    inset:0;
+    z-index:1000001;
+
+    background:rgba(35,25,20,.92);
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.image-preview-box{
+    position:relative;
+    width:100%;
+    max-width:420px;
+    text-align:center;
+}
+
+.image-preview-box p{
+    color:white;
+    font-size:16px;
+    margin-bottom:14px;
+}
+
+.image-preview-box img{
+    width:100%;
+    border-radius:22px;
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
+.image-preview-close{
+    position:absolute;
+    top:-14px;
+    right:-8px;
+
+    width:38px;
+    height:38px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.25);
+    color:white;
+
+    font-size:22px;
+    line-height:38px;
+
+    padding:0;
+    margin:0;
+}
+
+.image-download-btn{
+    display:block;
+
+    margin-top:18px;
+    padding:16px;
+
+    border-radius:22px;
+
+    background:linear-gradient(135deg,#DDB986,#C8965F);
+
+    color:white;
+    text-decoration:none;
+
+    font-size:20px;
+    font-weight:700;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.18);
+}
+
+.share-card.compact .share-card-item{
+    width:180px;
+}
+
+.share-card.compact .share-card-item img{
+    width:135px;
+}
+
+.share-card.compact .share-card-item h3{
+    font-size:22px;
+}
+
+.share-card.compact .share-card-item p{
+    font-size:20px;
+}
+
+/* 下載結果圖：自動換行，避免牌太多被裁切 */
+
+.share-cards{
+    display:flex !important;
+    justify-content:center !important;
+    align-items:flex-start !important;
+    flex-wrap:wrap !important;
+    gap:22px !important;
+}
+
+.share-card-item{
+    flex:0 0 auto !important;
+    width:230px !important;
+}
+
+.share-card-item img{
+    width:175px !important;
+    max-width:100% !important;
+}
+
+.loading-toast{
+    display:none;
+
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+
+    z-index:1000002;
+
+    background:rgba(35,25,20,.88);
+    color:white;
+
+    padding:16px 26px;
+    border-radius:999px;
+
+    font-size:16px;
+    font-weight:700;
+    white-space:nowrap;
+
+min-width:260px;
+
+text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.result-guide{
+
+    position:fixed;
+
+    left:50%;
+    top:35%;
+
+    transform:translate(-50%,-50%);
+
+    z-index:9999;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(0,0,0,.55);
+
+    color:#fff;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.8s;
+
+    backdrop-filter:blur(10px);
+
+}
+
+}
