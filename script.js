@@ -256,7 +256,6 @@ function showDailyFortuneResult(cardIndex,reversed,alreadyDrawn){
 
         <p class="daily-note">
             ${alreadyDrawn ? "你今天已抽過牌囉。" : "今天的牌卡已為你抽出。"}<br>
-          
         </p>
     `;
 }
