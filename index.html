@@ -10,7 +10,7 @@
     <link rel="icon" href="icon.png">
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css?v=3000">
+    <link rel="stylesheet" href="style.css?v=3009">
 
     <!-- ================= Google Analytics 開始 ================= -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NJ1ZM10F2"></script>
@@ -34,47 +34,42 @@
         <div class="notice-box">
             <h2>🔮 公告 🔮</h2>
 
-            <div class="notice-content">
-                <p>
-                    歡迎使用
-                    <span class="highlight">Ray Tarot</span>
+            <div class="notice-content compact-notice">
+                <p class="notice-intro">
+                    <span>歡迎使用 <span class="highlight">Ray Tarot</span></span>
+                    <span>每一次抽牌，都是一次與自己對話的機會</span>
                 </p>
 
-                <p>
-                    每一次抽牌，都是一次與自己對話的機會
+                <p class="notice-item">
+                    <span class="tag">☀️ 今日運勢</span>
+                    <span class="notice-desc">給今天的自己一個溫柔的提醒</span>
                 </p>
 
-                <p>
-                    <span class="tag">☀️ 今日運勢</span><br>
-            給今天的自己一個溫柔的提醒
+                <p class="notice-item">
+                    <span class="tag">🔮 我要占卜</span>
+                    <span class="notice-desc">輸入問題後選擇牌陣</span>
+                    <span class="notice-desc">探索事件背後的訊息與方向</span>
                 </p>
 
-                <p>
-                    <span class="tag">🔮 我要占卜</span><br>
-                    輸入問題後選擇牌陣<br>
-                    探索事件背後的訊息與方向
+                <p class="notice-item">
+                    <span class="tag">📖 塔羅日記</span>
+                    <span class="notice-desc">建立自己與塔羅牌的連結</span>
+                    <span class="notice-desc">固定使用 <span class="highlight">正位牌</span></span>
                 </p>
 
-                <p>
- <span class="tag">📖 塔羅日記</span><br>建立自己與塔羅牌的連結<br>
-                    固定使用
-                    <span class="highlight">正位牌</span>
+                <p class="notice-item">
+                    <span class="tag">✨ 取得解讀內容</span>
+                    <span class="notice-desc">自動複製完整牌陣資訊</span>
+                    <span class="notice-desc">可貼到 <span class="highlight">ChatGPT</span></span>
+                    <span class="notice-desc">或其他 AI 進行解讀</span>
                 </p>
 
-                <p>
-                    <span class="tag">✨ 取得解讀內容</span><br>
-                    自動複製完整牌陣資訊<br>
-                    可貼到
-                    <span class="highlight">ChatGPT</span><br>
-                    或其他 AI 進行解讀
-                </p>
-
-                <p style="font-size:13px;color:#9A8268;">
+                <p class="notice-small">
                     本網站提供塔羅抽牌功能<br>
                     不提供自動解牌服務
                 </p>
 
-                <p>
+                <p class="notice-wish">
                     ✨ 願每張牌都帶來新的啟發 ✨
                 </p>
 
@@ -83,7 +78,7 @@
                 </p>
             </div>
 
-            <button onclick="closeNoticeModal()">
+            <button type="button" onclick="document.getElementById('noticeModal').style.display='none'">
                 我知道了
             </button>
         </div>
@@ -148,7 +143,11 @@
                 <div id="dailyResult" class="daily-result" style="display:none;"></div>
 
                 <button id="dailyCopyButton" onclick="copyDailyFortuneContent()" style="display:none;">
-                    📋 複製今日運勢
+                    📋 複製今日運勢內容
+                </button>
+
+                <button id="dailyDownloadButton" onclick="downloadDailyFortuneImage()" style="display:none;">
+                    📷 下載今日運勢圖
                 </button>
 
                 <button onclick="showScreen('homeScreen')">
@@ -338,7 +337,7 @@
 
     <!-- ================= 外部工具與主程式 ================= -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script src="script.js?v=3000"></script>
+    <script src="script.js?v=3009"></script>
     <!-- ================= 外部工具與主程式結束 ================= -->
 
 </body>

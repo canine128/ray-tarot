@@ -99,6 +99,7 @@ let spreadKey = "three";
 let hasShuffled = false;
 let dailyMode = false;
 let currentModalIndex = 0;
+let modalCards = [];
 let touchStartX = 0;
 let swipeHintShown = false;
 let resultHintShown = false;
@@ -184,6 +185,12 @@ function showDailyFortuneEmptyState(){
     document.getElementById("dailyEmptyState").style.display = "block";
     document.getElementById("dailyResult").style.display = "none";
     document.getElementById("dailyCopyButton").style.display = "none";
+
+    const dailyDownloadButton = document.getElementById("dailyDownloadButton");
+
+    if(dailyDownloadButton){
+        dailyDownloadButton.style.display = "none";
+    }
 }
 
 function drawDailyFortune(){
@@ -220,10 +227,15 @@ function showDailyFortuneResult(cardIndex,reversed,alreadyDrawn){
     const dailyEmptyState = document.getElementById("dailyEmptyState");
     const dailyResult = document.getElementById("dailyResult");
     const dailyCopyButton = document.getElementById("dailyCopyButton");
+    const dailyDownloadButton = document.getElementById("dailyDownloadButton");
 
     dailyEmptyState.style.display = "none";
     dailyResult.style.display = "block";
     dailyCopyButton.style.display = "block";
+
+    if(dailyDownloadButton){
+        dailyDownloadButton.style.display = "block";
+    }
 
     dailyResult.innerHTML =
     `
@@ -232,6 +244,7 @@ function showDailyFortuneResult(cardIndex,reversed,alreadyDrawn){
 
             <img
             src="${card.image}"
+            onclick="event.stopPropagation(); openDailyCardModal(${cardIndex}, ${reversed});"
             class="${reversed ? "reversed" : ""}"
             alt="${card.name}">
 
@@ -242,7 +255,8 @@ function showDailyFortuneResult(cardIndex,reversed,alreadyDrawn){
         </div>
 
         <p class="daily-note">
-            ${alreadyDrawn ? "你今天已抽過牌囉。" : "今天的牌卡已為你抽出。"}
+            ${alreadyDrawn ? "你今天已抽過牌囉。" : "今天的牌卡已為你抽出。"}<br>
+          
         </p>
     `;
 }
@@ -284,10 +298,86 @@ ${card.name} ${saved.reversed ? "逆位" : "正位"}
 請用溫柔、清楚、適合日常參考的方式解讀。`;
 
     navigator.clipboard.writeText(text).then(()=>{
-        showWarning("今日運勢內容已複製，可至 AI 上解牌");
+        showWarning("今日運勢內容已複製📋");
     }).catch(()=>{
         showWarning("複製失敗，請再試一次");
     });
+}
+
+// ================= 今日運勢結果圖下載功能 =================
+
+function downloadDailyFortuneImage(){
+    if(typeof html2canvas === "undefined"){
+        showWarning("圖片下載工具尚未載入，請確認網路或重新整理");
+        return;
+    }
+
+    const saved = getSavedDailyFortune();
+
+    if(!saved || saved.date !== getTodayKey()){
+        showWarning("請先抽取今日牌卡 ☀️");
+        return;
+    }
+
+    const card = cards[saved.cardIndex];
+
+    if(!card){
+        showWarning("找不到今日牌卡，請重新整理後再試");
+        return;
+    }
+
+    const shareCard = document.getElementById("shareCard");
+    const shareQuestion = document.getElementById("shareQuestion");
+    const shareCards = document.getElementById("shareCards");
+
+    shareCard.classList.remove("compact");
+
+    shareQuestion.innerHTML =
+    `
+        <div>
+            <strong>主題：</strong>
+            今日運勢
+        </div>
+        <div>
+            <strong>日期：</strong>
+            ${getTodayDisplayText()}
+        </div>
+    `;
+
+    shareCards.innerHTML =
+    `
+        <div class="share-card-item">
+            <h3>今日牌卡</h3>
+
+            <img
+            src="${card.image}"
+            class="${saved.reversed ? "reversed" : ""}"
+            alt="${card.name}">
+
+            <p>
+                ${card.name}<br>
+                ${saved.reversed ? "逆位" : "正位"}
+            </p>
+        </div>
+    `;
+
+    document.getElementById("loadingToast").style.display = "block";
+
+    setTimeout(()=>{
+        html2canvas(shareCard,{
+            backgroundColor:null,
+            scale:2,
+            useCORS:true
+        }).then(canvas=>{
+            document.getElementById("loadingToast").style.display = "none";
+
+            const image = canvas.toDataURL("image/png");
+            showResultImagePreview(image,"RayTarot_Daily_Fortune.png");
+        }).catch(()=>{
+            document.getElementById("loadingToast").style.display = "none";
+            showWarning("圖片產生失敗，請重新整理後再試");
+        });
+    },300);
 }
 
 // ================= 我要占卜與塔羅日記入口 =================
@@ -578,7 +668,7 @@ function showResult(){
     showResultGuide();
 }
 
-// ================= 複製給 AI 解讀功能 =================
+// ================= 複製解讀內容功能 =================
 
 function copyReadingContent(){
     if(selectedCards.length === 0){
@@ -612,7 +702,7 @@ ${card.reversed ? "逆位" : "正位"}
 進行完整解讀。`;
 
     navigator.clipboard.writeText(text).then(()=>{
-        showWarning("解讀內容已複製，可至 AI 上解牌 📋");
+        showWarning("解讀內容已複製📋");
     }).catch(()=>{
         showWarning("複製失敗，請再試一次");
     });
@@ -659,7 +749,7 @@ function backFromShuffle(){
 // ================= 提醒視窗功能 =================
 
 function showWarning(message){
-    document.getElementById("warningText").innerText = message;
+    document.getElementById("warningText").innerHTML = message;
     document.getElementById("warningModal").style.display = "flex";
 }
 
@@ -670,23 +760,65 @@ function closeWarning(){
 // ================= 牌面放大功能 =================
 
 function openCardModal(index){
-    currentModalIndex = index;
+    openCardModalFromList(selectedCards,index);
+}
 
+function openDailyCardModal(cardIndex,reversed){
+    const card = cards[cardIndex];
+
+    if(!card){
+        return;
+    }
+
+    openCardModalFromList([
+        {
+            ...card,
+            reversed
+        }
+    ],0);
+}
+
+function openCardModalFromList(cardList,index){
+    modalCards = cardList.filter(Boolean);
+
+    if(modalCards.length === 0){
+        return;
+    }
+
+    currentModalIndex = index;
+    renderCardModal();
+}
+
+function renderCardModal(){
     const modal = document.getElementById("cardModal");
     const img = document.getElementById("cardModalImg");
-    const card = selectedCards[currentModalIndex];
+    const hint = document.getElementById("swipeHint");
+    const card = modalCards[currentModalIndex];
 
     if(!card){
         return;
     }
 
     img.src = card.image;
+
+    // 放大檢視時固定顯示正位，避免逆位牌被倒轉後不好查看。
+    // 結果頁面仍會保留原本的正逆位顯示。
     img.classList.remove("reversed");
+
     modal.style.display = "flex";
 
-    const hint = document.getElementById("swipeHint");
+    if(!hint){
+        return;
+    }
 
-    if(hint && !swipeHintShown){
+    if(modalCards.length <= 1){
+        hint.style.display = "none";
+        return;
+    }
+
+    hint.style.display = "block";
+
+    if(!swipeHintShown){
         swipeHintShown = true;
         hint.style.opacity = "1";
 
@@ -705,6 +837,10 @@ function handleTouchStart(event){
 }
 
 function handleTouchEnd(event){
+    if(modalCards.length <= 1){
+        return;
+    }
+
     const touchEndX = event.changedTouches[0].clientX;
     const distance = touchEndX - touchStartX;
 
@@ -720,23 +856,31 @@ function handleTouchEnd(event){
 }
 
 function nextModalCard(){
+    if(modalCards.length <= 1){
+        return;
+    }
+
     currentModalIndex++;
 
-    if(currentModalIndex >= selectedCards.length){
+    if(currentModalIndex >= modalCards.length){
         currentModalIndex = 0;
     }
 
-    openCardModal(currentModalIndex);
+    renderCardModal();
 }
 
 function prevModalCard(){
+    if(modalCards.length <= 1){
+        return;
+    }
+
     currentModalIndex--;
 
     if(currentModalIndex < 0){
-        currentModalIndex = selectedCards.length - 1;
+        currentModalIndex = modalCards.length - 1;
     }
 
-    openCardModal(currentModalIndex);
+    renderCardModal();
 }
 
 // ================= 下載結果圖功能 =================
@@ -816,7 +960,7 @@ function downloadShareImage(){
     },300);
 }
 
-function showResultImagePreview(image){
+function showResultImagePreview(image,filename = "RayTarot_Result.png"){
     let preview = document.getElementById("imagePreviewModal");
 
     if(!preview){
@@ -849,6 +993,7 @@ function showResultImagePreview(image){
 
     document.getElementById("imagePreviewImg").src = image;
     document.getElementById("imageDownloadBtn").href = image;
+    document.getElementById("imageDownloadBtn").download = filename;
 
     preview.style.display = "flex";
 }
