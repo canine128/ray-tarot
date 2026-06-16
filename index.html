@@ -2,319 +2,344 @@
 <html lang="zh-Hant">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🔮Ray Tarot🔮</title>
-<link rel="icon" href="icon.png">
+    <title>🔮 Ray Tarot 🔮</title>
 
-<link rel="apple-touch-icon" href="icon.png">
+    <link rel="icon" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css?v=3000">
 
-<link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="style.css?v=2000">
+    <!-- ================= Google Analytics 開始 ================= -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NJ1ZM10F2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-<!-- Google Analytics 開始 -->
+        function gtag(){
+            dataLayer.push(arguments);
+        }
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9NJ1ZM10F2"></script>
-
-<script>
-window.dataLayer = window.dataLayer || [];
-
-function gtag(){
-    dataLayer.push(arguments);
-}
-
-gtag('js', new Date());
-
-gtag('config', 'G-9NJ1ZM10F2');
-</script>
-
-<!-- Google Analytics 結束 -->
-
+        gtag('js', new Date());
+        gtag('config', 'G-9NJ1ZM10F2');
+    </script>
+    <!-- ================= Google Analytics 結束 ================= -->
 </head>
 
 <body>
 
-<!-- 公告視窗 -->
-<div id="noticeModal" class="notice-modal">
+    <!-- ================= 公告視窗 ================= -->
+    <div id="noticeModal" class="notice-modal">
+        <div class="notice-box">
+            <h2>🔮 公告 🔮</h2>
 
-    <div class="notice-box">
+            <div class="notice-content">
+                <p>
+                    歡迎使用
+                    <span class="highlight">Ray Tarot</span>
+                </p>
 
-        <h2>🔮 公告 🔮</h2>
+                <p>
+                    每一次抽牌，都是一次與自己對話的機會
+                </p>
 
-        <div class="notice-content">
+                <p>
+                    <span class="tag">☀️ 今日運勢</span><br>
+            給今天的自己一個溫柔的提醒
+                </p>
 
-            <p>
-                歡迎使用
-                <span class="highlight">Ray Tarot</span>
-            </p>
+                <p>
+                    <span class="tag">🔮 我要占卜</span><br>
+                    輸入問題後選擇牌陣<br>
+                    探索事件背後的訊息與方向
+                </p>
 
-            <p>
-                每一次抽牌，都是一次與自己對話的機會
-            </p>
+                <p>
+ <span class="tag">📖 塔羅日記</span><br>建立自己與塔羅牌的連結<br>
+                    固定使用
+                    <span class="highlight">正位牌</span>
+                </p>
 
-            <p>
-                <span class="tag">🔮 我要占卜</span><br>
-                輸入問題後選擇牌陣<br>
-                探索事件背後的訊息與方向
-            </p>
+                <p>
+                    <span class="tag">✨ 取得解讀內容</span><br>
+                    自動複製完整牌陣資訊<br>
+                    可貼到
+                    <span class="highlight">ChatGPT</span><br>
+                    或其他 AI 進行解讀
+                </p>
 
-            <p>
-                <span class="tag">📖 塔羅日記</span><br>
-                抽出今日主題牌<br>
-                感受今天最值得留意的能量<br>
-                固定使用
-                <span class="highlight">正位牌</span>
-            </p>
+                <p style="font-size:13px;color:#9A8268;">
+                    本網站提供塔羅抽牌功能<br>
+                    不提供自動解牌服務
+                </p>
 
-            <p>
-                <span class="tag">✨ 取得解讀內容</span><br>
-                自動複製完整牌陣資訊<br>
-                可貼到
-                <span class="highlight">ChatGPT</span><br>
-                或其他 AI 進行解讀
-            </p>
+                <p>
+                    ✨ 願每張牌都帶來新的啟發 ✨
+                </p>
 
-            <p style="font-size:13px;color:#9A8268;">
-                本網站提供塔羅抽牌功能<br>
-                不提供自動解牌服務
-            </p>
+                <p class="developer-sub">
+                    Created by Ray
+                </p>
+            </div>
 
-            <p>
-                ✨ 願每張牌都帶來新的啟發 ✨
-            </p>
-
-<p class="developer-sub">
-    Created by Ray
-</p>
-
+            <button onclick="closeNoticeModal()">
+                我知道了
+            </button>
         </div>
-        <button onclick="document.getElementById('noticeModal').style.display='none'">
-            我知道了
-        </button>
-
     </div>
+    <!-- ================= 公告視窗結束 ================= -->
 
-</div>
+    <div class="app">
 
-<div class="app">
+        <!-- ================= 模式選擇首頁 ================= -->
+        <section id="homeScreen" class="screen active">
+            <h1>Ray Tarot</h1>
 
-    <!-- 模式選擇首頁 -->
-    <section id="homeScreen" class="screen active">
-        <h1>塔羅牌占卜</h1>
+            <div class="panel">
+                <h2>請選擇模式</h2>
 
-        <div class="panel">
-            <h2>請選擇模式</h2>
+                <div class="spread-grid">
+                    <div class="spread-card" onclick="startDailyFortune()">
+                        <h3>☀️ 今日運勢</h3>
+                        <p>每天一張牌，與自己對話一分鐘</p>
+                    </div>
+
+                    <div class="spread-card" onclick="startDivination()">
+                        <h3>🔮 我要占卜</h3>
+                        <p>選擇牌陣並開始占卜</p>
+                    </div>
+
+                    <div class="spread-card" onclick="startDiary()">
+                        <h3>📖 塔羅日記</h3>
+                        <p>抽出今日主題牌</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ================= 模式選擇首頁結束 ================= -->
+
+        <!-- ================= 今日運勢區塊 ================= -->
+        <section id="dailyFortuneScreen" class="screen">
+            <h1>今日運勢</h1>
+
+            <div class="panel daily-panel">
+                <h2>☀️ 今日牌卡</h2>
+
+                <p id="dailyDate" class="daily-date">
+                    今日日期
+                </p>
+
+                <p>
+                    每天一張牌，<br>
+                    看看今天想提醒你什麼。
+                </p>
+
+                <div id="dailyEmptyState" class="daily-empty-state">
+                    <div class="daily-card-back">
+                        <img src="cards/card_back.jpg" alt="塔羅牌背">
+                    </div>
+
+                    <button onclick="drawDailyFortune()">
+                        抽取今日牌卡
+                    </button>
+                </div>
+
+                <div id="dailyResult" class="daily-result" style="display:none;"></div>
+
+                <button id="dailyCopyButton" onclick="copyDailyFortuneContent()" style="display:none;">
+                    📋 複製今日運勢
+                </button>
+
+                <button onclick="showScreen('homeScreen')">
+                    ← 返回模式選擇
+                </button>
+            </div>
+        </section>
+        <!-- ================= 今日運勢區塊結束 ================= -->
+
+        <!-- ================= 問題輸入頁 ================= -->
+        <section id="questionScreen" class="screen">
+            <h1>輸入問題</h1>
+
+            <div class="panel">
+                <h2>你想詢問什麼？</h2>
+
+                <p>
+                    請專注於你的問題<br>
+                    聆聽內心的聲音
+                </p>
+
+                <textarea id="userQuestion" class="question-box" placeholder="請輸入問題..." rows="2"></textarea>
+
+                <button onclick="goToSpreadScreen()">
+                    下一步
+                </button>
+
+                <button onclick="showScreen('homeScreen')">
+                    ← 返回模式選擇
+                </button>
+            </div>
+        </section>
+        <!-- ================= 問題輸入頁結束 ================= -->
+
+        <!-- ================= 牌陣選擇頁 ================= -->
+        <section id="spreadScreen" class="screen">
+            <h1>選擇牌陣</h1>
 
             <div class="spread-grid">
-
-                <div class="spread-card" onclick="startDivination()">
-                    <h3>🔮 我要占卜</h3>
-                    <p>選擇牌陣並開始占卜</p>
+                <div class="spread-card" onclick="chooseSpread(1,'single')">
+                    <h3>🔮 單張牌</h3>
+                    <p>1張｜快速指引</p>
                 </div>
 
-                <div class="spread-card" onclick="startDiary()">
-                    <h3>📖 塔羅日記</h3>
-                    <p>抽出今日主題牌</p>
+                <div class="spread-card" onclick="chooseSpread(3,'three')">
+                    <h3>✨ 三張牌</h3>
+                    <p>3張｜過去・現在・未來</p>
                 </div>
 
+                <div class="spread-card" onclick="chooseSpread(5,'cross')">
+                    <h3>➕ 大十字</h3>
+                    <p>5張｜深入分析現況與結果</p>
+                </div>
+
+                <div class="spread-card" onclick="chooseSpread(5,'choice')">
+                    <h3>⚖️ 二選一</h3>
+                    <p>5張｜比較 A / B 選項</p>
+                    <small>
+                        問題範例：<br>
+                        我該繼續留在公司嗎？<br>
+                        A：留下　B：離職
+                    </small>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+        <!-- ================= 牌陣選擇頁結束 ================= -->
 
-    <!-- 問題輸入頁 -->
-    <section id="questionScreen" class="screen">
-        <h1>輸入問題</h1>
+        <!-- ================= 洗牌畫面 ================= -->
+        <section id="shuffleScreen" class="screen">
+            <h1>請先洗牌</h1>
 
-        <div class="panel">
-            <h2>你想詢問什麼？</h2>
+            <div class="deck-area">
+                <div id="shuffleCards" class="shuffle-cards"></div>
 
-            <p>
-                請專注於你的問題
-                <br>聆聽內心的聲音
+                <div id="deck" class="deck" onclick="shuffleDeck()">
+                    <img src="cards/card_back.jpg" alt="塔羅牌背">
+                </div>
+            </div>
+
+            <p class="hint">
+                點擊牌堆洗牌，完成後進入選牌。
             </p>
 
-            <textarea
-            id="userQuestion"
-            class="question-box"
-            placeholder="請輸入問題..."
-            rows="2"></textarea>
-
-            <button onclick="goToSpreadScreen()">
-                下一步
+            <button onclick="goToDrawScreen()">
+                完成洗牌
             </button>
 
-            <button onclick="showScreen('homeScreen')">
-                ← 返回模式選擇
+            <button onclick="backFromShuffle()">
+                ← 返回上一頁
             </button>
-        </div>
-    </section>
+        </section>
+        <!-- ================= 洗牌畫面結束 ================= -->
 
-<!-- 牌陣選擇 -->
-<section id="spreadScreen" class="screen">
-    <h1>選擇牌陣</h1>
+        <!-- ================= 選牌畫面 ================= -->
+        <section id="drawScreen" class="screen">
+            <h1 id="drawTitle">請選牌</h1>
 
-    <div class="spread-grid">
+            <p id="selectedCount" class="hint">
+                已選 0 張
+            </p>
 
-        <div class="spread-card" onclick="chooseSpread(1,'single')">
-            <h3>🔮 單張牌</h3>
-            <p>1張｜快速指引</p>
-        </div>
-
-        <div class="spread-card" onclick="chooseSpread(3,'three')">
-            <h3>✨ 三張牌</h3>
-            <p>3張｜過去・現在・未來</p>
-        </div>
-
-        <div class="spread-card" onclick="chooseSpread(5,'cross')">
-            <h3>➕ 大十字</h3>
-            <p>5張｜深入分析現況與結果</p>
-        </div>
-
-        <div class="spread-card" onclick="chooseSpread(5,'choice')">
-
-    <h3>⚖️ 二選一</h3>
-
-    <p>5張｜比較 A / B 選項</p>
-<small>
-問題範例：<br>
-我該繼續留在公司嗎？<br>
-A：留下　B：離職
-</small>
-
-</div>
-
-    </div>
-</section>
-    <!-- 洗牌畫面 -->
-    <section id="shuffleScreen" class="screen">
-        <h1>請先洗牌</h1>
-
-        <div class="deck-area">
-
-            <div id="shuffleCards" class="shuffle-cards"></div>
-
-            <div id="deck" class="deck" onclick="shuffleDeck()">
-                <img src="cards/card_back.jpg">
+            <div class="slide-hint">
+                ← 左右滑動選牌 →
             </div>
 
+            <div id="cardSelection" class="card-selection"></div>
+
+            <button onclick="finishSelection()">
+                選擇完成
+            </button>
+        </section>
+        <!-- ================= 選牌畫面結束 ================= -->
+
+        <!-- ================= 結果畫面 ================= -->
+        <section id="resultScreen" class="screen">
+            <h1>占卜結果</h1>
+
+            <div id="resultGuide" class="result-guide">
+                ⇠ 左右滑動牌面 · 點擊可放大
+            </div>
+
+            <div id="result"></div>
+            <div id="aiReadingBox"></div>
+
+            <button onclick="copyReadingContent()">
+                ✨ 取得解讀內容 ✨
+            </button>
+
+            <button onclick="downloadShareImage()">
+                📷 下載結果圖
+            </button>
+
+            <button onclick="restartReading()">
+                🔮 新的占卜 🔮
+            </button>
+        </section>
+        <!-- ================= 結果畫面結束 ================= -->
+
+    </div>
+
+    <!-- ================= 提示視窗 ================= -->
+    <div id="warningModal" class="notice-modal" style="display:none;">
+        <div class="notice-box">
+            <h2>🔮 提醒</h2>
+
+            <p id="warningText">
+                請先洗牌 🔄
+            </p>
+
+            <button onclick="closeWarning()">
+                我知道了
+            </button>
         </div>
-
-        <p class="hint">
-            點擊牌堆洗牌，完成後進入選牌。
-        </p>
-
-        <button onclick="goToDrawScreen()">
-            完成洗牌
-        </button>
-
-        <button onclick="backFromShuffle()">
-            ← 返回上一頁
-        </button>
-    </section>
-
-    <!-- 選牌畫面 -->
-    <section id="drawScreen" class="screen">
-        <h1 id="drawTitle">請選牌</h1>
-
-    <p id="selectedCount" class="hint">
-    已選 0 張
-</p>
-
-<div class="slide-hint">
-    ← 左右滑動選牌 →
-</div>
-
-<div id="cardSelection" class="card-selection"></div>
-
-        <button onclick="finishSelection()">
-            選擇完成
-        </button>
-    </section>
-
-    <!-- 結果畫面 -->
-    <section id="resultScreen" class="screen">
-        <h1>占卜結果</h1>
-
-        <div id="resultGuide" class="result-guide">
-    ⇠ 左右滑動牌面 · 點擊可放大 
-</div>
-
-<div id="result"></div>
-        <div id="aiReadingBox"></div>
-
-<button onclick="copyReadingContent()">
-    ✨ 取得解讀內容 ✨
-</button>
-
-<button onclick="downloadShareImage()">
-    📷 下載結果圖
-</button>
-
-<button onclick="restartReading()">
-    🔮 新的占卜 🔮
-</button>
-    </section>
-
-</div>
-
-<!-- 提示視窗 -->
-<div id="warningModal" class="notice-modal" style="display:none;">
-
-    <div class="notice-box">
-
-        <h2>🔮 提醒</h2>
-
-        <p id="warningText">
-            請先洗牌 🔄
-        </p>
-
-        <button onclick="closeWarning()">
-            我知道了
-        </button>
-
     </div>
+    <!-- ================= 提示視窗結束 ================= -->
 
-</div>
+    <!-- ================= 牌面放大視窗 ================= -->
+    <div id="cardModal" class="card-modal" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event)">
+        <button class="close-modal" onclick="event.stopPropagation(); closeCardModal();">
+            ✕
+        </button>
 
-<!-- 牌面放大視窗 -->
+        <img id="cardModalImg" alt="放大的塔羅牌">
 
-<div
-id="cardModal"
-class="card-modal"
-ontouchstart="handleTouchStart(event)"
-ontouchend="handleTouchEnd(event)">
-
-    <button
-    class="close-modal"
-    onclick="event.stopPropagation();closeCardModal();">
-        ✕
-    </button>
-
-    <img id="cardModalImg">
-
-    <div id="swipeHint" class="swipe-hint">
-        ⇠ 滑動切換牌面 ⇢
+        <div id="swipeHint" class="swipe-hint">
+            ⇠ 滑動切換牌面 ⇢
+        </div>
     </div>
+    <!-- ================= 牌面放大視窗結束 ================= -->
 
-</div>
+    <!-- ================= 下載結果圖用的隱藏分享卡 ================= -->
+    <div id="shareCard" class="share-card">
+        <div class="share-watermark">Ray Tarot</div>
 
-<!-- 下載結果圖用的隱藏分享卡 -->
-<div id="shareCard" class="share-card">
+        <h2>🔮 Ray Tarot 🔮</h2>
 
-    <h2>🔮 Ray Tarot 🔮</h2>
+        <div id="shareQuestion" class="share-question"></div>
+        <div id="shareCards" class="share-cards"></div>
+    </div>
+    <!-- ================= 下載結果圖用的隱藏分享卡結束 ================= -->
 
-    <div id="shareQuestion" class="share-question"></div>
+    <!-- ================= 載入提示 ================= -->
+    <div id="loadingToast" class="loading-toast">
+        📷 正在產生結果圖...
+    </div>
+    <!-- ================= 載入提示結束 ================= -->
 
-    <div id="shareCards" class="share-cards"></div>
+    <!-- ================= 外部工具與主程式 ================= -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="script.js?v=3000"></script>
+    <!-- ================= 外部工具與主程式結束 ================= -->
 
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-
-<script src="script.js?v=2000"></script>
-
-<div id="loadingToast" class="loading-toast">
-    📷 正在產生結果圖...
-</div>
 </body>
 </html>
