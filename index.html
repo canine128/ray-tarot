@@ -6351,6 +6351,18 @@ button:active{
 
         gtag('js', new Date());
         gtag('config', 'G-9NJ1ZM10F2');
+
+        // ===== Ray Tarot GA4 自訂事件追蹤 開始 =====
+        function trackRayEvent(eventName, eventParams = {}){
+            try{
+                if(typeof gtag === "function"){
+                    gtag("event",eventName,eventParams);
+                }
+            }catch(error){
+                // 追蹤失敗時不影響 Ray Tarot 原本功能
+            }
+        }
+        // ===== Ray Tarot GA4 自訂事件追蹤 結束 =====
     </script>
     <!-- ================= Google Analytics 結束 ================= -->
 </head>
@@ -6878,6 +6890,11 @@ button:active{
     -->
     <script>
         function openStoryModalFallback(){
+            // GA追蹤：記錄使用者點擊首頁「閱讀故事」入口
+            trackRayEvent("click_story",{
+                entry:"home_story_card"
+            });
+
             var storyModal = document.getElementById('storyModal');
 
             if(storyModal){
@@ -7483,6 +7500,11 @@ function getCardLibraryCategories(){
 }
 
 function startCardLibrary(){
+    // GA追蹤：記錄使用者點擊「牌面介紹」入口
+    trackRayEvent("click_card_library",{
+        entry:"home_mode_card"
+    });
+
     renderCardLibraryCategory("major");
     showScreen("cardLibraryScreen");
 }
@@ -7491,6 +7513,12 @@ function renderCardLibraryCategory(categoryKey){
     const categories = getCardLibraryCategories();
     const category = categories[categoryKey] || categories.major;
     const grid = document.getElementById("cardLibraryGrid");
+
+    // GA追蹤：記錄使用者查看哪一個牌面分類
+    trackRayEvent("view_card_category",{
+        category_key:categoryKey || "major",
+        category_name:category.title
+    });
 
     if(!grid){
         return;
@@ -7520,6 +7548,15 @@ function renderCardLibraryCategory(categoryKey){
 function openCardLibraryModal(index){
     if(currentLibraryCards.length === 0){
         return;
+    }
+
+    const libraryCard = currentLibraryCards[index];
+
+    if(libraryCard){
+        // GA追蹤：記錄使用者查看哪一張牌的詳細內容
+        trackRayEvent("view_card_detail",{
+            card_name:libraryCard.name || "unknown"
+        });
     }
 
     // ===== 牌面介紹改用專用放大牌義視窗 開始 =====
@@ -7652,6 +7689,11 @@ initCardLibraryClickFix();
 // ================= 今日運勢功能 =================
 
 function startDailyFortune(){
+    // GA追蹤：記錄使用者點擊「今日運勢」入口
+    trackRayEvent("click_daily_fortune",{
+        entry:"home_mode_card"
+    });
+
     dailyMode = false;
     selectedCards = [];
     shuffledDeck = [];
@@ -7739,6 +7781,12 @@ function drawDailyFortune(){
 
     localStorage.setItem(DAILY_STORAGE_KEY,JSON.stringify(dailyData));
 
+    // GA追蹤：記錄使用者完成今日牌卡抽取
+    trackRayEvent("draw_daily_card",{
+        card_name:cards[cardIndex] ? cards[cardIndex].name : "unknown",
+        orientation:reversed ? "reversed" : "upright"
+    });
+
     showDailyFortuneResult(cardIndex,reversed,false);
 }
 
@@ -7823,6 +7871,12 @@ ${card.name} ${saved.reversed ? "逆位" : "正位"}
 請用溫柔、清楚、適合日常參考的方式解讀。`;
 
     navigator.clipboard.writeText(text).then(()=>{
+        // GA追蹤：記錄使用者複製今日運勢內容
+        trackRayEvent("copy_daily_fortune",{
+            card_name:card.name || "unknown",
+            orientation:saved.reversed ? "reversed" : "upright"
+        });
+
         showWarning("今日運勢內容已複製📋");
     }).catch(()=>{
         showWarning("複製失敗，請再試一次");
@@ -8216,6 +8270,13 @@ function downloadDailyFortuneImage(){
     });
 
     if(ok){
+        // GA追蹤：記錄使用者下載今日運勢分享圖片
+        trackRayEvent("download_image",{
+            image_type:"daily_fortune",
+            card_name:card.name || "unknown",
+            orientation:saved.reversed ? "reversed" : "upright"
+        });
+
         captureSharePoster("RayTarot_Daily_Fortune.png");
     }
 }
@@ -8223,6 +8284,11 @@ function downloadDailyFortuneImage(){
 // ================= 我要占卜與塔羅日記入口 =================
 
 function startDivination(){
+    // GA追蹤：記錄使用者點擊「我要占卜」入口
+    trackRayEvent("click_divination",{
+        entry:"home_mode_card"
+    });
+
     dailyMode = false;
     hasShuffled = false;
     selectedCards = [];
@@ -8238,12 +8304,22 @@ function startDivination(){
 }
 
 function startDiary(){
+    // GA追蹤：記錄使用者點擊「塔羅日記」入口
+    trackRayEvent("click_tarot_diary",{
+        entry:"home_mode_card"
+    });
+
     dailyMode = true;
     spreadType = 1;
     spreadKey = "single";
     hasShuffled = false;
     selectedCards = [];
     shuffledDeck = [];
+
+    // GA追蹤：記錄塔羅日記自動使用單張牌陣
+    trackRayEvent("choose_spread",getSpreadTrackingParams({
+        source:"tarot_diary"
+    }));
 
     document.getElementById("userQuestion").value = "塔羅日記";
     showScreen("shuffleScreen");
@@ -8258,6 +8334,11 @@ function chooseSpread(cardCount,key){
     selectedCards = [];
     shuffledDeck = [];
 
+    // GA追蹤：記錄使用者選擇哪一個牌陣
+    trackRayEvent("choose_spread",getSpreadTrackingParams({
+        source:"spread_screen"
+    }));
+
     showScreen("questionScreen");
 }
 
@@ -8268,6 +8349,11 @@ function goToSpreadScreen(){
         showWarning("請先輸入問題 ✨");
         return;
     }
+
+    // GA追蹤：記錄使用者送出占卜問題
+    trackRayEvent("submit_question",getSpreadTrackingParams({
+        question_length:question.length
+    }));
 
     showScreen("shuffleScreen");
 }
@@ -8281,6 +8367,9 @@ function shuffleDeck(){
     shuffledDeck = [...cards].sort(()=>Math.random() - 0.5);
     selectedCards = [];
     hasShuffled = true;
+
+    // GA追蹤：記錄使用者執行洗牌
+    trackRayEvent("shuffle_deck",getSpreadTrackingParams());
 
     shuffleCards.innerHTML = "";
 
@@ -8320,6 +8409,9 @@ function goToDrawScreen(){
         showWarning("請先洗牌 🔄");
         return;
     }
+
+    // GA追蹤：記錄使用者進入選牌畫面
+    trackRayEvent("start_card_selection",getSpreadTrackingParams());
 
     showScreen("drawScreen");
     startDraw();
@@ -8373,6 +8465,11 @@ function pickCard(index,element){
         ...card,
         reversed:dailyMode ? false : Math.random() < 0.5
     });
+
+    // GA追蹤：記錄使用者選牌進度
+    trackRayEvent("select_card",getSpreadTrackingParams({
+        selected_count:selectedCards.length
+    }));
 
     element.classList.add("selected");
     updateSelectedText();
@@ -8434,6 +8531,27 @@ function getSpreadName(){
     return "塔羅占卜";
 }
 
+
+// ===== Ray Tarot GA4 牌陣事件參數 開始 =====
+function getSpreadTrackingKey(){
+    if(dailyMode){
+        return "tarot_diary";
+    }
+
+    return spreadKey || "unknown";
+}
+
+function getSpreadTrackingParams(extraParams = {}){
+    return {
+        mode:dailyMode ? "tarot_diary" : "divination",
+        spread_key:getSpreadTrackingKey(),
+        spread_name:getSpreadName(),
+        card_count:spreadType,
+        ...extraParams
+    };
+}
+// ===== Ray Tarot GA4 牌陣事件參數 結束 =====
+
 function getCardTypeClass(card){
     if(card.image.includes("/c")){
         return "cups-card";
@@ -8463,6 +8581,11 @@ function finishSelection(){
         showWarning(`請選擇 ${needCards} 張牌`);
         return;
     }
+
+    // GA追蹤：記錄使用者完成整個牌陣抽牌
+    trackRayEvent("draw_card_complete",getSpreadTrackingParams({
+        selected_count:selectedCards.length
+    }));
 
     showScreen("resultScreen");
     showResult();
@@ -8542,6 +8665,11 @@ ${card.reversed ? "逆位" : "正位"}
 進行完整解讀。`;
 
     navigator.clipboard.writeText(text).then(()=>{
+        // GA追蹤：記錄使用者複製占卜解讀內容
+        trackRayEvent("copy_reading_content",getSpreadTrackingParams({
+            selected_count:selectedCards.length
+        }));
+
         showWarning("解讀內容已複製📋");
     }).catch(()=>{
         showWarning("複製失敗，請再試一次");
@@ -8798,6 +8926,12 @@ function downloadShareImage(){
     });
 
     if(ok){
+        // GA追蹤：記錄使用者下載占卜結果分享圖片
+        trackRayEvent("download_image",getSpreadTrackingParams({
+            image_type:"reading_result",
+            selected_count:selectedCards.length
+        }));
+
         captureSharePoster("RayTarot_Result.png");
     }
 }
@@ -8882,6 +9016,11 @@ function openStoryModal(event){
     if(event){
         event.preventDefault();
     }
+
+    // GA追蹤：記錄使用者開啟誕生故事視窗
+    trackRayEvent("click_story",{
+        entry:"story_modal_function"
+    });
 
     const storyModal = document.getElementById("storyModal");
 
