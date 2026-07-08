@@ -7933,10 +7933,15 @@ function setImportantStyle(element, property, value){
 }
 
 function getForcedShareLayout(cardCount){
+    /*
+       下載圖標題框位置統一版：
+       所有牌陣的標題框都固定貼近 Ray Tarot 標誌下方，
+       只依牌數調整牌面大小與間距，不再讓標題框忽高忽低。
+    */
     if(cardCount === 1){
         return {
-            content:{top:"370px", bottom:"330px", left:"100px", right:"100px"},
-            question:{width:"680px", marginBottom:"36px", padding:"18px 30px 20px"},
+            content:{top:"200px", bottom:"330px", left:"100px", right:"100px"},
+            question:{width:"700px", marginBottom:"34px", padding:"18px 30px 20px"},
             cards:{columnGap:"0px", rowGap:"0px", width:"285px"},
             itemWidth:"285px",
             positionFont:"28px",
@@ -7951,8 +7956,8 @@ function getForcedShareLayout(cardCount){
 
     if(cardCount === 2){
         return {
-            content:{top:"360px", bottom:"320px", left:"90px", right:"90px"},
-            question:{width:"700px", marginBottom:"42px", padding:"18px 30px 20px"},
+            content:{top:"200px", bottom:"320px", left:"90px", right:"90px"},
+            question:{width:"700px", marginBottom:"36px", padding:"18px 30px 20px"},
             cards:{columnGap:"28px", rowGap:"0px", width:"528px"},
             itemWidth:"250px",
             positionFont:"18px",
@@ -7967,8 +7972,8 @@ function getForcedShareLayout(cardCount){
 
     if(cardCount === 3){
         return {
-            content:{top:"365px", bottom:"305px", left:"78px", right:"78px"},
-            question:{width:"700px", marginBottom:"46px", padding:"18px 30px 20px"},
+            content:{top:"200px", bottom:"305px", left:"78px", right:"78px"},
+            question:{width:"700px", marginBottom:"38px", padding:"18px 30px 20px"},
             cards:{columnGap:"32px", rowGap:"0px", width:"724px"},
             itemWidth:"220px",
             positionFont:"19px",
@@ -7983,8 +7988,8 @@ function getForcedShareLayout(cardCount){
 
     if(cardCount <= 6){
         return {
-            content:{top:"330px", bottom:"300px", left:"82px", right:"82px"},
-            question:{width:"700px", marginBottom:"22px", padding:"15px 28px 17px"},
+            content:{top:"200px", bottom:"300px", left:"82px", right:"82px"},
+            question:{width:"700px", marginBottom:"20px", padding:"15px 28px 17px"},
             cards:{columnGap:"28px", rowGap:"22px", width:"602px"},
             itemWidth:"182px",
             positionFont:"13.5px",
@@ -7999,8 +8004,8 @@ function getForcedShareLayout(cardCount){
 
     if(cardCount <= 9){
         return {
-            content:{top:"318px", bottom:"300px", left:"68px", right:"68px"},
-            question:{width:"700px", marginBottom:"14px", padding:"12px 24px 14px"},
+            content:{top:"200px", bottom:"300px", left:"68px", right:"68px"},
+            question:{width:"700px", marginBottom:"12px", padding:"12px 24px 14px"},
             cards:{columnGap:"20px", rowGap:"12px", width:"475px"},
             itemWidth:"145px",
             positionFont:"10px",
@@ -8014,8 +8019,8 @@ function getForcedShareLayout(cardCount){
     }
 
     return {
-        content:{top:"306px", bottom:"286px", left:"58px", right:"58px"},
-        question:{width:"700px", marginBottom:"12px", padding:"11px 22px 13px"},
+        content:{top:"200px", bottom:"286px", left:"58px", right:"58px"},
+        question:{width:"700px", marginBottom:"10px", padding:"11px 22px 13px"},
         cards:{columnGap:"18px", rowGap:"10px", width:"471px"},
         itemWidth:"145px",
         positionFont:"9.6px",
