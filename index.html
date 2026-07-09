@@ -6541,7 +6541,7 @@ button:active{
                 </button>
 
                 <button onclick="showScreen('homeScreen')">
-                    ← 返回模式選擇
+                    ← 返回上一頁
                 </button>
             </div>
         </section>
@@ -6589,7 +6589,7 @@ button:active{
                 <div id="cardLibraryGrid" class="card-library-grid"></div>
 
                 <button onclick="showScreen('homeScreen')">
-                    ← 返回模式選擇
+                    ← 返回上一頁
                 </button>
             </div>
         </section>
@@ -6614,7 +6614,7 @@ button:active{
                 </button>
 
                 <button onclick="showScreen('homeScreen')">
-                    ← 返回模式選擇
+                    ← 返回上一頁
                 </button>
             </div>
         </section>
@@ -6650,6 +6650,10 @@ button:active{
                     </small>
                 </div>
             </div>
+
+            <button onclick="showScreen('homeScreen')">
+                ← 返回上一頁
+            </button>
         </section>
         <!-- ================= 牌陣選擇頁結束 ================= -->
 
@@ -6696,6 +6700,10 @@ button:active{
             <button onclick="finishSelection()">
                 選擇完成
             </button>
+
+            <button onclick="backFromDraw()">
+                ← 返回上一頁
+            </button>
         </section>
         <!-- ================= 選牌畫面結束 ================= -->
 
@@ -6729,7 +6737,7 @@ button:active{
             </button>
 
             <button onclick="restartReading()">
-                🔮 新的占卜 🔮
+                ← 返回首頁
             </button>
         </section>
         <!-- ================= 結果畫面結束 ================= -->
@@ -8683,6 +8691,19 @@ function backFromShuffle(){
     }else{
         showScreen("spreadScreen");
     }
+}
+
+function backFromDraw(){
+    selectedCards = [];
+
+    const cardSelection = document.getElementById("cardSelection");
+
+    if(cardSelection){
+        cardSelection.innerHTML = "";
+    }
+
+    updateSelectedText();
+    showScreen("shuffleScreen");
 }
 
 // ================= 提醒視窗功能 =================
