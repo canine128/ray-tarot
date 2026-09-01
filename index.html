@@ -2,6 +2,7 @@
 <html lang="zh-Hant">
 
 <head>
+    <!-- 網站基本設定 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,18 +12,11 @@
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="manifest" href="manifest.json">
 
-    <!-- ===== 單一主檔整理版說明 開始 ===== -->
-    <!--
-    ===單一主檔整理版說明 開始===
-    這一版把 外部樣式與外部程式檔 重新整合進 index.html。
-    用途是讓資料夾保持乾淨，避免出現用不到的 CSS / JS 檔案造成混亂。
-    目前主程式、樣式與功能都在 index.html 裡，外部只保留圖片素材與 manifest.json。
-    ===單一主檔整理版說明 結束===
-    -->
-    <!-- ===== 單一主檔整理版說明 結束 ===== -->
+
+    <!-- Ray Tarot 程式碼導覽：各功能的中文註解都放在對應程式碼上方；功能顯示設定請搜尋「首頁功能開關」。 -->
 
     <style>
-/* ================= 全站基本設定 ================= */
+/* 全站基本樣式 */
 
 html,
 body{
@@ -93,7 +87,8 @@ h1{
     color:#8A7360;
 }
 
-/* ================= 表單與按鈕 ================= */
+
+/* 表單與按鈕 */
 
 textarea{
     width:100%;
@@ -133,7 +128,8 @@ button:active{
     transform:scale(.97);
 }
 
-/* ================= 模式與牌陣卡片 ================= */
+
+/* 功能入口與牌陣卡片 */
 
 .spread-grid{
     display:flex;
@@ -183,7 +179,8 @@ button:active{
     line-height:1.45;
 }
 
-/* ================= 今日運勢樣式 ================= */
+
+/* 今日運勢 */
 
 .daily-panel{
     text-align:center;
@@ -259,7 +256,8 @@ button:active{
     line-height:1.5 !important;
 }
 
-/* ================= 牌面介紹樣式 ================= */
+
+/* 牌面介紹 */
 
 .card-library-panel{
     text-align:center;
@@ -291,7 +289,7 @@ button:active{
     box-shadow:0 5px 14px rgba(120,80,45,.14);
 }
 
-/* ===== 牌面介紹上下滑動提示 開始 ===== */
+
 .card-library-guide{
     display:block;
     margin:10px auto 18px;
@@ -310,7 +308,7 @@ button:active{
     text-align:center;
     opacity:.92;
 }
-/* ===== 牌面介紹上下滑動提示 結束 ===== */
+
 
 .card-library-grid{
     display:grid;
@@ -347,7 +345,8 @@ button:active{
     line-height:1.35;
 }
 
-/* ================= 洗牌畫面 ================= */
+
+/* 洗牌 */
 
 .deck-area{
     position:relative;
@@ -424,7 +423,8 @@ button:active{
     }
 }
 
-/* ================= 選牌畫面 ================= */
+
+/* 選牌 */
 
 .card-selection{
     display:grid;
@@ -494,7 +494,8 @@ button:active{
     }
 }
 
-/* ================= 結果畫面 ================= */
+
+/* 占卜結果 */
 
 #result{
     width:100%;
@@ -575,14 +576,13 @@ button:active{
     transform:rotate(180deg);
 }
 
-/* 牌組背景色 */
+
 .cups-card{ background:#FFF5F8; }
 .wands-card{ background:#F4F9FF; }
 .pentacles-card{ background:#F8F0E6; }
 .swords-card{ background:#F3F4F6; }
 .major-card{ background:#FFF7E3; }
 
-/* ================= 結果頁溫柔提醒框 ================= */
 
 .result-reminder-box{
     margin:6px 0 10px;
@@ -613,7 +613,346 @@ button:active{
     font-weight:600;
 }
 
-/* ================= AI 解讀框 ================= */
+
+/* 年度流年 */
+
+
+#yearlyHomeSubtitle{
+    margin-bottom:0;
+}
+
+.yearly-home-date{
+    display:block;
+    margin-top:-4px;
+    color:#A98763;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.04em;
+    line-height:1.4;
+}
+
+
+.yearly-intro-screen{
+    padding-top:18px;
+}
+
+.yearly-intro-screen h1{
+    display:none;
+}
+
+.yearly-intro-panel{
+    text-align:center;
+    max-width:660px;
+    margin:0 auto;
+    padding:32px 24px 26px;
+}
+
+.yearly-intro-main{
+    max-width:560px;
+    margin:0 auto 10px;
+    color:#6B4F3B;
+    line-height:1.9;
+}
+
+.yearly-intro-main h2{
+    margin-bottom:18px;
+    font-size:clamp(30px,6vw,42px);
+    letter-spacing:1px;
+}
+
+.yearly-intro-main p{
+    margin:14px 0;
+    font-size:15px;
+    font-weight:600;
+    color:#7B6350;
+}
+
+.yearly-rule-text{
+    margin:18px 0;
+    padding:16px 18px;
+    background:rgba(245,232,214,.62);
+    border:1px solid rgba(201,178,154,.32);
+    border-radius:22px;
+    box-shadow:0 10px 24px rgba(153,122,92,.08);
+}
+
+#drawDescription,
+#resultStatusText{
+    max-width:560px;
+    margin:10px auto 18px;
+    color:#7B6350;
+    line-height:1.9;
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:.2px;
+}
+
+#drawDescription{
+    margin-top:8px;
+    margin-bottom:14px;
+}
+
+#yearlyLimitedReminder .result-reminder-title{
+    letter-spacing:.6px;
+}
+
+#yearlyLimitedReminder .result-reminder-text{
+    line-height:1.9;
+}
+
+.yearly-test-reset-button{
+    background:linear-gradient(135deg,#C9B29A,#A88467);
+}
+
+
+.yearly-intro-panel{
+    padding:30px 24px 24px;
+}
+
+.yearly-intro-main{
+    max-width:520px;
+}
+
+.yearly-intro-main h2{
+    margin:0 0 18px;
+    line-height:1.28;
+}
+
+.yearly-intro-main p{
+    margin:10px 0;
+    line-height:1.82;
+}
+
+.yearly-rule-text{
+    margin:18px auto;
+    padding:15px 16px;
+    max-width:480px;
+    line-height:1.85;
+}
+
+#drawScreen #drawTitle{
+    margin-bottom:12px;
+    line-height:1.32;
+}
+
+#drawDescription{
+    max-width:520px;
+    margin:6px auto 16px;
+    line-height:1.82;
+}
+
+#drawScreen .slide-hint{
+    margin-top:8px;
+    margin-bottom:14px;
+}
+
+#resultStatusText{
+    max-width:540px;
+    margin:8px auto 18px;
+    line-height:1.82;
+}
+
+#yearlyLimitedReminder{
+    margin-top:12px;
+    margin-bottom:14px;
+}
+
+#yearlyLimitedReminder .result-reminder-title{
+    margin-bottom:6px;
+}
+
+#yearlyLimitedReminder .result-reminder-text{
+    line-height:1.75;
+}
+
+@media (max-width:430px){
+    .yearly-intro-panel{
+        padding:28px 20px 24px;
+    }
+
+    .yearly-intro-main p,
+    #drawDescription,
+    #resultStatusText{
+        font-size:14.5px;
+    }
+
+    .yearly-rule-text{
+        padding:14px 15px;
+    }
+}
+
+
+.yearly-intro-panel{
+    padding:30px 22px 24px;
+}
+
+.yearly-intro-main{
+    max-width:500px;
+}
+
+.yearly-intro-main h2{
+    margin:0 0 16px;
+    line-height:1.26;
+    letter-spacing:.5px;
+}
+
+.yearly-intro-main p{
+    margin:12px auto;
+    max-width:460px;
+    font-size:14.5px;
+    line-height:1.9;
+    font-weight:600;
+    color:#7B6350;
+}
+
+.yearly-intro-lead{
+    margin-top:2px;
+}
+
+.yearly-rule-text{
+    margin:10px auto 12px;
+    padding:0;
+    max-width:460px;
+    background:transparent;
+    border:none;
+    border-radius:0;
+    box-shadow:none;
+    color:#7B6350;
+}
+
+#shuffleHint,
+#drawDescription,
+#resultStatusText{
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:14.5px;
+    line-height:1.9;
+    font-weight:600;
+    color:#7B6350;
+}
+
+#shuffleHint{
+    margin-top:14px;
+    margin-bottom:16px;
+}
+
+#drawScreen #drawTitle,
+#resultTitle{
+    line-height:1.28;
+    letter-spacing:.4px;
+}
+
+#drawDescription{
+    margin-top:6px;
+    margin-bottom:14px;
+}
+
+#resultStatusText{
+    margin-top:6px;
+    margin-bottom:16px;
+}
+
+#yearlyLimitedReminder{
+    margin-top:12px;
+    margin-bottom:14px;
+}
+
+#yearlyLimitedReminder .result-reminder-title{
+    margin-bottom:8px;
+    letter-spacing:.4px;
+}
+
+#yearlyLimitedReminder .result-reminder-text{
+    line-height:1.8;
+}
+
+@media (max-width:430px){
+    .yearly-intro-panel{
+        padding:28px 18px 22px;
+    }
+
+    .yearly-intro-main p,
+    #shuffleHint,
+    #drawDescription,
+    #resultStatusText{
+        font-size:14px;
+    }
+}
+
+
+.yearly-intro-main p,
+#drawDescription,
+#resultStatusText{
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    line-height: 1.75;
+    letter-spacing: 0;
+}
+
+.yearly-intro-main p{
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
+.yearly-intro-lead{
+    margin-top: 8px;
+}
+
+.yearly-rule-text{
+    display:none;
+}
+
+#drawDescription{
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
+#resultStatusText{
+    margin-top: 8px;
+    margin-bottom: 18px;
+}
+
+#yearlyLimitedReminder{
+    margin-top: 14px;
+}
+
+#yearlyLimitedReminder .result-reminder-text{
+    line-height: 1.9;
+}
+
+
+.yearly-intro-main p,
+#drawDescription,
+#resultStatusText{
+    max-width:420px;
+    width:100%;
+    box-sizing:border-box;
+}
+
+.yearly-intro-main{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+#drawDescription,
+#resultStatusText{
+    text-align:center;
+}
+
+@media (max-width:430px){
+    .yearly-intro-main p,
+    #drawDescription,
+    #resultStatusText{
+        max-width:360px;
+    }
+}
+
+
+/* AI 解讀 */
 
 #aiReadingBox{
     display:none;
@@ -627,7 +966,8 @@ button:active{
     box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-/* ================= 公告與提醒視窗 ================= */
+
+/* 公告與提醒視窗 */
 
 .notice-modal{
     position:fixed;
@@ -947,7 +1287,8 @@ button:active{
     }
 }
 
-/* ================= 開發者簽名 ================= */
+
+/* 開發者資訊 */
 
 .developer-sign{
     margin:14px 0 0;
@@ -966,7 +1307,8 @@ button:active{
     letter-spacing:2px;
 }
 
-/* ================= 牌面放大視窗 ================= */
+
+/* 牌面放大視窗 */
 
 .card-modal{
     position:fixed;
@@ -1034,7 +1376,7 @@ button:active{
     backdrop-filter:blur(8px);
 }
 
-/* ===== 牌面介紹放大牌義滑動樣式 開始 ===== */
+/* 牌面介紹 */
 .card-modal-content{
     display:flex;
     flex-direction:column;
@@ -1186,7 +1528,7 @@ button:active{
         min-height:120px;
     }
 }
-/* ===== 牌面介紹放大牌義滑動樣式 結束 ===== */
+
 
 @keyframes cardReveal{
     0%{
@@ -1220,7 +1562,8 @@ button:active{
     }
 }
 
-/* ================= 結果滑動提醒 ================= */
+
+/* 占卜結果 */
 
 .result-guide{
     position:fixed;
@@ -1241,7 +1584,8 @@ button:active{
     backdrop-filter:blur(10px);
 }
 
-/* ================= 下載結果圖樣式 ================= */
+
+/* 分享圖片 */
 
 .share-card{
     position:fixed;
@@ -1337,7 +1681,8 @@ button:active{
     font-size:20px;
 }
 
-/* ================= 圖片預覽視窗 ================= */
+
+/* 圖片預覽視窗 */
 
 #imagePreviewModal{
     position:fixed;
@@ -1399,7 +1744,8 @@ button:active{
     box-shadow:0 8px 24px rgba(0,0,0,.18);
 }
 
-/* ================= 載入提示 ================= */
+
+/* 載入提示 */
 
 .loading-toast{
     position:fixed;
@@ -1421,7 +1767,7 @@ button:active{
 }
 
 
-/* ================= 小螢幕緊湊版修正 ================= */
+/* 手機畫面適配 */
 
 @media (max-height:740px){
     .app{
@@ -1526,7 +1872,7 @@ button:active{
 }
 
 
-/* ===== 牌面介紹專用放大牌義視窗修正版 開始 ===== */
+/* 牌面介紹 */
 .library-card-modal{
     position:fixed;
     inset:0;
@@ -1720,9 +2066,8 @@ button:active{
         min-height:135px;
     }
 }
-/* ===== 牌面介紹專用放大牌義視窗修正版 結束 ===== */
 
-/* ===== 牌面介紹點擊修正樣式 開始 ===== */
+
 .library-card{
     position:relative;
     z-index:2;
@@ -1739,17 +2084,15 @@ button:active{
     position:relative;
     z-index:1;
 }
-/* ===== 牌面介紹點擊修正樣式 結束 ===== */
 
-/* ===== 牌面介紹牌義提示移除 開始 ===== */
+
 .library-modal-meaning .meaning-scroll-guide,
 .card-modal-meaning .meaning-scroll-guide,
 .meaning-scroll-guide{
     display:none !important;
 }
-/* ===== 牌面介紹牌義提示移除 結束 ===== */
 
-/* ===== 牌面介紹放大視窗關閉按鈕 開始 ===== */
+
 .library-modal-close{
     position:fixed;
     top:14px;
@@ -1785,9 +2128,9 @@ button:active{
     background:#F4E7D5;
     color:#4F3828;
 }
-/* ===== 牌面介紹放大視窗關閉按鈕 結束 ===== */
 
-/* ===== 下載結果圖分享系統 v3 開始 ===== */
+
+/* 分享圖片 */
 
 .share-card {
     position: fixed !important;
@@ -1935,7 +2278,7 @@ button:active{
     text-shadow: 0 2px 8px rgba(255, 250, 240, 0.72) !important;
 }
 
-/* 單張牌：今日運勢、塔羅日記 */
+
 .share-card.spread-1 .share-content {
     left: 95px !important;
     right: 95px !important;
@@ -2005,7 +2348,7 @@ button:active{
     transform: translateY(-8px);
 }
 
-/* 兩到三張牌：橫向排列 */
+
 .share-card.spread-2 .share-content,
 .share-card.spread-3 .share-content {
     top: 265px !important;
@@ -2049,7 +2392,7 @@ button:active{
     margin-top: 18px !important;
 }
 
-/* 四到六張牌：兩排排列 */
+
 .share-card.spread-6 .share-content {
     top: 255px !important;
     bottom: 210px !important;
@@ -2115,7 +2458,7 @@ button:active{
     letter-spacing: 0 !important;
 }
 
-/* 七到九張牌：三排排列 */
+
 .share-card.spread-9 .share-content {
     top: 245px !important;
     bottom: 200px !important;
@@ -2175,7 +2518,7 @@ button:active{
     letter-spacing: 0 !important;
 }
 
-/* 十張以上：四欄精簡排列 */
+
 .share-card.spread-many .share-content {
     top: 235px !important;
     bottom: 200px !important;
@@ -2235,11 +2578,6 @@ button:active{
     letter-spacing: 0 !important;
 }
 
-/* ===== 下載結果圖分享系統 v3 結束 ===== */
-
-
-
-/* ===== 下載結果圖單張牌文字防跑版修正 開始 ===== */
 
 .share-card-result-text {
     display: block !important;
@@ -2323,10 +2661,6 @@ button:active{
     letter-spacing: 0 !important;
 }
 
-/* ===== 下載結果圖單張牌文字防跑版修正 結束 ===== */
-
-
-/* ===== 下載結果圖單一底圖與動態排版系統 開始 ===== */
 
 .share-card {
     width: 1080px !important;
@@ -2761,12 +3095,10 @@ button:active{
     letter-spacing: 0 !important;
 }
 
-/* ===== 下載結果圖單一底圖與動態排版系統 結束 ===== */
+
+/* 占卜結果 */
 
 
-/* ===== 占卜結果牌面質感優化 開始 ===== */
-
-/* 取消五大牌組在占卜結果中的彩色框，改成統一奶茶白質感 */
 .result-card,
 .cups-card,
 .wands-card,
@@ -2814,9 +3146,8 @@ button:active{
     box-shadow:none !important;
 }
 
-/* ===== 占卜結果牌面質感優化 結束 ===== */
 
-/* ===== 下載結果圖排版質感優化 開始 ===== */
+/* 分享圖片 */
 
 .share-question{
     background:rgba(255, 250, 242, 0.28) !important;
@@ -2836,7 +3167,7 @@ button:active{
     text-shadow:0 2px 8px rgba(255, 250, 240, 0.82) !important;
 }
 
-/* 單張牌：縮一點牌面，保留牌名與底部祝福語的安全距離 */
+
 .share-card.spread-1 .share-content{
     top:390px !important;
     bottom:300px !important;
@@ -2869,7 +3200,7 @@ button:active{
     margin-top:4px !important;
 }
 
-/* 三張牌：讓牌名區有固定空間，不貼到牌面 */
+
 .share-card.spread-2 .share-card-result-text,
 .share-card.spread-3 .share-card-result-text{
     min-height:70px !important;
@@ -2877,7 +3208,7 @@ button:active{
     display:block !important;
 }
 
-/* 四到六張牌：降低牌面高度，避免往下壓到底部文字 */
+
 .share-card.spread-6 .share-content{
     top:330px !important;
     bottom:285px !important;
@@ -2901,17 +3232,13 @@ button:active{
     margin-top:7px !important;
 }
 
-/* 七張以上：再保守一點，優先不跑版 */
+
 .share-card.spread-9 .share-content,
 .share-card.spread-many .share-content{
     bottom:285px !important;
 }
 
-/* ===== 下載結果圖排版質感優化 結束 ===== */
 
-/* ===== 下載結果圖牌面與文字精修 開始 ===== */
-
-/* 讓「今日牌卡／答案」標題真正置中，不被字距或裝飾影響 */
 .share-card.spread-1 .share-card-item h3{
     width:100% !important;
     display:flex !important;
@@ -2930,7 +3257,7 @@ button:active{
     flex:0 0 auto !important;
 }
 
-/* 單張牌：今日運勢、單張牌加大牌面，但保留牌名安全距離 */
+
 .share-card.spread-1 .share-card-item{
     width:480px !important;
 }
@@ -2955,7 +3282,7 @@ button:active{
     font-size:42px !important;
 }
 
-/* 兩到三張牌：固定牌面高度，避免圖片底部壓到牌名 */
+
 .share-card.spread-2 .share-card-item,
 .share-card.spread-3 .share-card-item{
     width:270px !important;
@@ -2977,7 +3304,7 @@ button:active{
     line-height:1.18 !important;
 }
 
-/* 四到六張牌：固定牌面高度，讓兩排牌不遮字 */
+
 .share-card.spread-6 .share-card-item{
     width:220px !important;
 }
@@ -2996,7 +3323,7 @@ button:active{
     line-height:1.14 !important;
 }
 
-/* 七到九張牌：固定安全高度 */
+
 .share-card.spread-9 .share-card-item img{
     height:280px !important;
     max-height:280px !important;
@@ -3008,7 +3335,7 @@ button:active{
     min-height:30px !important;
 }
 
-/* 十張以上：固定安全高度 */
+
 .share-card.spread-many .share-card-item img{
     height:225px !important;
     max-height:225px !important;
@@ -3020,17 +3347,6 @@ button:active{
     min-height:26px !important;
 }
 
-/* ===== 下載結果圖牌面與文字精修 結束 ===== */
-
-
-/* ===== 分享圖片比例與單張牌放大修正 r1.9.1 開始 ===== */
-
-/*
-   修正重點：
-   1. 分享圖片中的牌面改回依原圖比例顯示，避免被固定高度拉寬或裁切。
-   2. 今日運勢／單張牌放大牌面，但保留牌名與正逆位文字的安全距離。
-   3. 「今日牌卡」標題用真正置中的文字容器，避免被裝飾符號與字距影響。
-*/
 
 .share-card-item{
     overflow: visible !important;
@@ -3060,7 +3376,7 @@ button:active{
     z-index: 5 !important;
 }
 
-/* 今日運勢、塔羅日記、單張牌：牌面放大，但不裁切、不拉寬 */
+
 .share-card.spread-1 .share-content{
     top: 372px !important;
     bottom: 280px !important;
@@ -3137,7 +3453,7 @@ button:active{
     font-size: 40px !important;
 }
 
-/* 兩到三張牌：保留原圖比例，並拉開牌面與牌名距離 */
+
 .share-card.spread-2 .share-card-item img,
 .share-card.spread-3 .share-card-item img{
     width: 270px !important;
@@ -3152,7 +3468,7 @@ button:active{
     min-height: 64px !important;
 }
 
-/* 四到六張牌：略縮寬度換取正確比例與文字安全距離 */
+
 .share-card.spread-6 .share-card-item{
     width: 205px !important;
 }
@@ -3168,7 +3484,7 @@ button:active{
     margin-top: 9px !important;
 }
 
-/* 七張以上：避免原圖比例變高後超出分享圖範圍 */
+
 .share-card.spread-9 .share-card-item{
     width: 168px !important;
 }
@@ -3191,17 +3507,6 @@ button:active{
     object-fit: contain !important;
 }
 
-/* ===== 分享圖片比例與單張牌放大修正 r1.9.1 結束 ===== */
-
-
-/* ===== 分享圖片牌位文字上移修正 r1.9.2 開始 ===== */
-
-/*
-   修正重點：
-   分享圖中「過去／現在／未來」、「現況／挑戰」這類牌位文字，
-   會太靠近牌面，遇到逆位牌時容易壓到牌面原本的上方文字。
-   這段只調整分享圖的牌位文字距離，不更動抽牌流程與其他畫面。
-*/
 
 .share-card .share-card-item h3{
     position: relative !important;
@@ -3209,43 +3514,38 @@ button:active{
     overflow: visible !important;
 }
 
-/* 今日運勢／塔羅日記／單張牌：牌位文字再往上，保留放大牌面 */
+
 .share-card.spread-1 .share-card-item h3{
     top: -14px !important;
     margin-bottom: 34px !important;
 }
 
-/* 二張、三張牌：最常出現逆位文字靠近牌面，距離拉大一點 */
+
 .share-card.spread-2 .share-card-item h3,
 .share-card.spread-3 .share-card-item h3{
     top: -18px !important;
     margin-bottom: 24px !important;
 }
 
-/* 四到六張牌：牌比較小，文字稍微上移避免壓到牌面 */
+
 .share-card.spread-6 .share-card-item h3{
     top: -10px !important;
     margin-bottom: 15px !important;
 }
 
-/* 七到九張牌：保留安全距離，但不要讓整體太擠 */
+
 .share-card.spread-9 .share-card-item h3{
     top: -7px !important;
     margin-bottom: 9px !important;
 }
 
-/* 十張以上：小幅上移，避免壓到牌面上緣 */
+
 .share-card.spread-many .share-card-item h3{
     top: -6px !important;
     margin-bottom: 8px !important;
 }
 
-/* ===== 分享圖片牌位文字上移修正 r1.9.2 結束 ===== */
 
-
-/* ===== 分享圖片膠囊標籤與標題框強化 r1.9.3 開始 ===== */
-
-/* 大標題／日期／問題框更明顯 */
 .share-question{
     background:rgba(255, 250, 242, 0.78) !important;
     border:2px solid rgba(186, 137, 82, 0.34) !important;
@@ -3280,7 +3580,7 @@ button:active{
     text-shadow:0 1px 6px rgba(255, 248, 240, 0.82) !important;
 }
 
-/* 牌面上方位置文字：提高辨識度，做成膠囊標籤 */
+
 .share-card .share-card-item h3{
     width:100% !important;
     display:flex !important;
@@ -3312,7 +3612,7 @@ button:active{
     white-space:nowrap !important;
 }
 
-/* 保留與牌面上緣的安全距離 */
+
 .share-card.spread-1 .share-card-item h3{
     top:-16px !important;
     margin-bottom:36px !important;
@@ -3339,7 +3639,7 @@ button:active{
     margin-bottom:10px !important;
 }
 
-/* 小牌陣與多牌陣的膠囊再精簡一點，避免過寬 */
+
 .share-card.spread-6 .share-card-position-text{
     min-height:34px !important;
     padding:6px 16px !important;
@@ -3353,7 +3653,7 @@ button:active{
     font-size:12px !important;
 }
 
-/* 單張牌的標題膠囊更有存在感 */
+
 .share-card.spread-1 .share-card-position-text{
     min-height:50px !important;
     padding:10px 28px !important;
@@ -3361,7 +3661,7 @@ button:active{
     letter-spacing:2px !important;
 }
 
-/* 二張、三張牌略強化清晰度 */
+
 .share-card.spread-2 .share-card-position-text,
 .share-card.spread-3 .share-card-position-text{
     min-height:44px !important;
@@ -3369,7 +3669,7 @@ button:active{
     font-size:24px !important;
 }
 
-/* 問題欄位字數較多時，保留兩行但框更穩定 */
+
 .share-card.spread-6 .share-meta-question,
 .share-card.spread-9 .share-meta-question,
 .share-card.spread-many .share-meta-question{
@@ -3380,20 +3680,7 @@ button:active{
     padding:8px 18px !important;
 }
 
-/* ===== 分享圖片膠囊標籤與標題框強化 r1.9.3 結束 ===== */
 
-
-/* ===== 分享圖片質感修正 r1.9.4 開始 ===== */
-
-/*
-   修正重點：
-   1. 移除問題文字的膠囊框，回到乾淨文字。
-   2. 牌面上方位置標籤保留膠囊概念，但改成細緻、低飽和、輕邊框。
-   3. 移除單張牌「答案／今日牌卡」旁邊過重的星星裝飾。
-   4. 不更動抽牌流程，只覆蓋分享圖樣式。
-*/
-
-/* 大標題區：保留明顯框，但降低厚重感 */
 .share-question{
     background:rgba(255, 250, 242, 0.62) !important;
     border:1.2px solid rgba(176, 128, 75, 0.25) !important;
@@ -3403,7 +3690,7 @@ button:active{
         inset 0 1px 0 rgba(255, 255, 255, 0.62) !important;
 }
 
-/* 牌陣名稱與日期：更清楚但不要太厚重 */
+
 .share-meta-title{
     color:#835A36 !important;
     font-weight:800 !important;
@@ -3416,7 +3703,7 @@ button:active{
     text-shadow:0 1px 5px rgba(255, 248, 238, 0.78) !important;
 }
 
-/* 問題文字：不要膠囊框 */
+
 .share-meta-question{
     display:block !important;
     width:auto !important;
@@ -3436,14 +3723,14 @@ button:active{
     text-shadow:0 1px 5px rgba(255, 248, 238, 0.72) !important;
 }
 
-/* 移除牌位旁邊過重的星星裝飾，讓版面乾淨一點 */
+
 .share-card .share-card-item h3::before,
 .share-card .share-card-item h3::after{
     content:none !important;
     display:none !important;
 }
 
-/* 牌面上方位置文字：細緻膠囊標籤 */
+
 .share-card-position-text{
     display:inline-flex !important;
     align-items:center !important;
@@ -3467,7 +3754,7 @@ button:active{
     text-shadow:0 1px 4px rgba(255, 248, 238, 0.78) !important;
 }
 
-/* 單張牌：標籤不要太大，避免廉價感 */
+
 .share-card.spread-1 .share-card-item h3{
     top:-10px !important;
     margin-bottom:30px !important;
@@ -3482,7 +3769,7 @@ button:active{
     letter-spacing:2px !important;
 }
 
-/* 二張、三張牌：標籤清楚一點，但不要壓迫牌面 */
+
 .share-card.spread-2 .share-card-item h3,
 .share-card.spread-3 .share-card-item h3{
     top:-18px !important;
@@ -3496,7 +3783,7 @@ button:active{
     font-size:23px !important;
 }
 
-/* 四到六張牌：縮小膠囊，保留空間 */
+
 .share-card.spread-6 .share-card-item h3{
     top:-10px !important;
     margin-bottom:16px !important;
@@ -3508,7 +3795,7 @@ button:active{
     font-size:15px !important;
 }
 
-/* 七張以上：精簡標籤避免擁擠 */
+
 .share-card.spread-9 .share-card-item h3{
     top:-6px !important;
     margin-bottom:9px !important;
@@ -3527,20 +3814,7 @@ button:active{
     border-radius:999px !important;
 }
 
-/* ===== 分享圖片質感修正 r1.9.4 結束 ===== */
 
-
-/* ===== 分享圖片取消膠囊框與文字安全距離 r1.9.5 開始 ===== */
-
-/*
-   修正重點：
-   1. 取消所有牌位文字的膠囊框，避免壓縮分享圖空間。
-   2. 牌面上方文字改回純文字，但加強清晰度與安全距離。
-   3. 問題文字保持無膠囊框，只留在大標題框內。
-   4. 不更動抽牌流程，只覆蓋分享圖樣式。
-*/
-
-/* 大標題區保留清楚框線，但不要有問題小膠囊 */
 .share-question{
     background:rgba(255, 250, 242, 0.56) !important;
     border:1.2px solid rgba(176, 128, 75, 0.22) !important;
@@ -3572,7 +3846,7 @@ button:active{
     -webkit-box-orient:vertical !important;
 }
 
-/* 取消牌位文字膠囊框：純文字、清楚、不裁切 */
+
 .share-card-position-text{
     display:block !important;
     width:100% !important;
@@ -3613,14 +3887,14 @@ button:active{
     box-shadow:none !important;
 }
 
-/* 移除膠囊版留下的星星裝飾 */
+
 .share-card .share-card-item h3::before,
 .share-card .share-card-item h3::after{
     content:none !important;
     display:none !important;
 }
 
-/* 單張牌：文字清晰，保留牌面空間 */
+
 .share-card.spread-1 .share-card-item h3{
     top:-8px !important;
     margin:0 auto 28px !important;
@@ -3634,7 +3908,7 @@ button:active{
     letter-spacing:3px !important;
 }
 
-/* 二張、三張牌：純文字往上一點，避免壓到逆位牌上緣 */
+
 .share-card.spread-2 .share-card-item h3,
 .share-card.spread-3 .share-card-item h3{
     top:-16px !important;
@@ -3649,7 +3923,7 @@ button:active{
     font-size:25px !important;
 }
 
-/* 四到六張牌：不吃空間，但仍清楚可讀 */
+
 .share-card.spread-6 .share-card-item h3{
     top:-8px !important;
     margin:0 auto 14px !important;
@@ -3663,7 +3937,7 @@ button:active{
     letter-spacing:0 !important;
 }
 
-/* 七到九張牌：精簡，避免影響三排牌空間 */
+
 .share-card.spread-9 .share-card-item h3{
     top:-5px !important;
     margin:0 auto 7px !important;
@@ -3677,7 +3951,7 @@ button:active{
     letter-spacing:0 !important;
 }
 
-/* 十張以上：最小安全文字，不影響後續牌陣空間 */
+
 .share-card.spread-many .share-card-item h3{
     top:-4px !important;
     margin:0 auto 6px !important;
@@ -3691,17 +3965,9 @@ button:active{
     letter-spacing:0 !important;
 }
 
-/* ===== 分享圖片取消膠囊框與文字安全距離 r1.9.5 結束 ===== */
 
+/* 全站關閉按鈕 */
 
-/* ===== 全站 X 關閉按鈕統一深棕色 r1.9.6 開始 ===== */
-
-/*
-   修正重點：
-   1. 統一所有「✕」關閉按鈕為深棕色系。
-   2. 包含牌面放大視窗、牌面介紹放大視窗、分享圖片預覽視窗。
-   3. 只調整關閉按鈕樣式，不更動原本功能流程。
-*/
 
 .close-modal,
 .library-modal-close,
@@ -3722,7 +3988,7 @@ button:active{
     color:#FFFFFF !important;
 }
 
-/* 讓三種 X 按鈕的文字都穩定置中 */
+
 .close-modal,
 .image-preview-close{
     display:flex !important;
@@ -3732,18 +3998,9 @@ button:active{
     text-align:center !important;
 }
 
-/* ===== 全站 X 關閉按鈕統一深棕色 r1.9.6 結束 ===== */
 
+/* Ray Tarot 誕生故事 */
 
-/* ===== Ray Tarot 誕生故事樣式 r1.9.7 開始 ===== */
-
-/*
-===Ray Tarot 誕生故事主要樣式 開始===
-這一段 CSS 是用來設定 Ray Tarot 誕生故事入口卡片與故事彈窗的主要外觀。
-包含故事入口卡片、故事彈窗背景、故事內容容器、標題、副標、分隔線、正文與簽名文字。
-這段只影響故事相關畫面，不會影響抽牌流程、牌面分類、牌卡圖片或分享圖片功能。
-===Ray Tarot 誕生故事主要樣式 結束===
-*/
 
 .tarot-story-entry{
     display:flex;
@@ -3950,18 +4207,6 @@ button:active{
     }
 }
 
-/* ===== Ray Tarot 誕生故事樣式 r1.9.7 結束 ===== */
-
-
-/* ===== Ray Tarot 故事視窗 X 按鈕深棕色同步 r1.9.7 開始 ===== */
-
-/*
-===故事視窗關閉按鈕樣式 開始===
-這一段 CSS 是用來同步故事彈窗右上角 X 關閉按鈕的顏色。
-用途是讓故事彈窗的關閉按鈕，和其他牌面放大視窗、分享預覽視窗的 X 按鈕一樣維持深棕色風格。
-這段只影響故事彈窗的 X 按鈕外觀，不會影響彈窗內容或其他功能。
-===故事視窗關閉按鈕樣式 結束===
-*/
 
 .story-modal-close{
     background:#4F3828 !important;
@@ -3976,19 +4221,6 @@ button:active{
     color:#FFFFFF !important;
 }
 
-/* ===== Ray Tarot 故事視窗 X 按鈕深棕色同步 r1.9.7 結束 ===== */
-
-
-/* ===== Ray Tarot 首頁誕生故事入口樣式 r1.9.8 開始 ===== */
-
-/*
-===首頁誕生故事入口樣式 開始===
-這一段 CSS 是用來設定「首頁 Ray Tarot 誕生故事入口」的外觀。
-包含首頁故事小卡的大小、間距、背景、邊框、陰影、標題文字與副標文字樣式。
-同時也把牌面介紹頁原本的故事入口調整得比較低調，讓它變成輔助入口，不會搶走牌面分類的重點。
-這段只影響故事入口的視覺樣式，不會影響抽牌、洗牌、牌面顯示或分享圖片排版。
-===首頁誕生故事入口樣式 結束===
-*/
 
 .home-story-entry{
     width:100%;
@@ -4036,7 +4268,7 @@ button:active{
     text-align:center;
 }
 
-/* 牌面介紹頁的故事入口保留，但改得更像輔助連結，不搶牌面分類焦點 */
+
 .card-library-panel .tarot-story-entry{
     margin:12px 0 12px;
     padding:12px 13px;
@@ -4081,18 +4313,6 @@ button:active{
     }
 }
 
-/* ===== Ray Tarot 首頁誕生故事入口樣式 r1.9.8 結束 ===== */
-
-
-/* ===== 故事入口點擊範圍修正 r1.9.10 開始 ===== */
-
-/*
-===故事入口點擊範圍修正 開始===
-這一段 CSS 是用來確保首頁與牌面介紹頁的 Ray Tarot 誕生故事入口可以被正常點擊。
-它會讓故事入口保持在可點擊層級，並加上手機觸控優化，避免被其他區塊壓住或點擊範圍不明顯。
-這段只影響故事入口的點擊狀態，不會影響抽牌、牌面分類、分享圖片或彈窗內容。
-===故事入口點擊範圍修正 結束===
-*/
 
 .home-story-entry,
 .tarot-story-entry{
@@ -4103,19 +4323,6 @@ button:active{
     -webkit-tap-highlight-color:rgba(106,73,48,.12) !important;
 }
 
-/* ===== 故事入口點擊範圍修正 r1.9.10 結束 ===== */
-
-
-/* ===== Ray Tarot 主頁誕生故事按鈕版面 r1.9.11 開始 ===== */
-
-/*
-===主頁誕生故事按鈕樣式 開始===
-這一段 CSS 是用來把主頁的 Ray Tarot 誕生故事入口，調整成參考圖那種橫向精品卡片版面。
-版面包含左側圓形星星圖示、中間標題與副標文字、右側深棕色「閱讀故事」按鈕。
-這段同時覆蓋舊版首頁故事入口樣式，並讓右側按鈕不被全站 button 樣式撐成滿版。
-這段只影響主頁誕生故事入口的外觀，不會影響故事彈窗內容、抽牌流程、牌面介紹分類或分享圖片排版。
-===主頁誕生故事按鈕樣式 結束===
-*/
 
 .home-story-entry.home-story-entry-wide{
     position:relative;
@@ -4263,36 +4470,17 @@ button:active{
     }
 }
 
-/* ===== Ray Tarot 主頁誕生故事按鈕版面 r1.9.11 結束 ===== */
 
+/* 牌面介紹 */
 
-/* ===== 牌面介紹誕生故事入口移除 r1.9.11 開始 ===== */
-
-/*
-===牌面介紹誕生故事入口移除 開始===
-這一段 CSS 是保險用設定。
-目前牌面介紹頁的誕生故事入口已經從 index.html 移除；這裡只是在舊快取或殘留元素出現時，確保它不會顯示在牌面介紹頁。
-這段不影響主頁誕生故事入口，也不影響牌面介紹分類、牌面放大或牌卡列表。
-===牌面介紹誕生故事入口移除 結束===
-*/
 
 .card-library-panel .tarot-story-entry{
     display:none !important;
 }
 
-/* ===== 牌面介紹誕生故事入口移除 r1.9.11 結束 ===== */
 
+/* Ray Tarot 誕生故事 */
 
-/* ===== Ray Tarot 主頁誕生故事小卡精修 r1.9.12 開始 ===== */
-
-/*
-===主頁誕生故事小卡精修樣式 開始===
-這一段 CSS 是用來精修主頁「Ray Tarot 的誕生故事」入口卡片。
-用途是把故事入口改得更小、更精緻，避免標題被擠成不自然的兩行，也避免右側「閱讀故事」按鈕太大造成版面厚重。
-這段會縮小卡片高度、左側星星圖示、文字大小與右側按鈕，並讓標題盡量維持單行顯示。
-這段只影響主頁誕生故事入口的外觀，不會影響故事彈窗內容、抽牌流程、牌面介紹、分享圖片或其他模式按鈕。
-===主頁誕生故事小卡精修樣式 結束===
-*/
 
 .home-story-entry.home-story-entry-wide{
     grid-template-columns:44px minmax(0,1fr) auto !important;
@@ -4412,19 +4600,9 @@ button:active{
     }
 }
 
-/* ===== Ray Tarot 主頁誕生故事小卡精修 r1.9.12 結束 ===== */
 
+/* 公告與提醒視窗 */
 
-/* ===== 公告視窗歡迎文字不換行修正 r1.9.13 開始 ===== */
-
-/*
-===公告視窗歡迎文字不換行修正 開始===
-這一段 CSS 是用來修正公告視窗中「歡迎使用 Ray Tarot」被拆成兩行的問題。
-原本 notice-intro 裡面的 span 樣式可能會讓內層的 Ray Tarot 也被當成獨立區塊顯示，導致文字換行。
-這段會讓 highlight 裡的 Ray Tarot 維持行內顯示，並讓第一行歡迎文字保持同一行。
-這段只影響公告視窗的歡迎文字排版，不會影響公告內容、首頁故事按鈕、抽牌流程、牌面介紹或分享圖片功能。
-===公告視窗歡迎文字不換行修正 結束===
-*/
 
 .notice-intro > span:first-child{
     white-space:nowrap !important;
@@ -4435,18 +4613,9 @@ button:active{
     white-space:nowrap !important;
 }
 
-/* ===== 公告視窗歡迎文字不換行修正 r1.9.13 結束 ===== */
 
+/* Ray Tarot 誕生故事 */
 
-/* ===== 主頁誕生故事按鈕點擊修正 r1.9.14 開始 ===== */
-
-/*
-===主頁誕生故事按鈕點擊修正 開始===
-這一段 CSS 是用來確保主頁的 Ray Tarot 誕生故事入口可以正常點擊。
-它會讓整張故事卡片與右側「閱讀故事」按鈕保有點擊事件，避免被其他區塊或樣式影響。
-這段只影響主頁誕生故事入口的點擊範圍，不會影響故事內容、抽牌流程、牌面介紹或分享圖片。
-===主頁誕生故事按鈕點擊修正 結束===
-*/
 
 .home-story-entry.home-story-entry-wide,
 .home-story-entry.home-story-entry-wide *{
@@ -4462,20 +4631,9 @@ button:active{
     z-index:3;
 }
 
-/* ===== 主頁誕生故事按鈕點擊修正 r1.9.14 結束 ===== */
 
+/* 分享圖片 */
 
-/* ===== 分享圖片恢復小卡版面設計 r1.9.18 開始 ===== */
-
-/*
-===分享圖片恢復小卡版面設計 開始===
-這一段 CSS 是用來把分享圖片恢復成小卡排列版面。
-用途是讓分享圖片回到使用者提供的截圖樣式：牌面尺寸較小、三張牌橫向排列、牌名與正逆位清楚顯示、底部祝福語不被擠掉。
-這段會重新覆蓋分享圖片中單張牌、三張牌、五到六張牌、七到九張牌與多牌陣的尺寸與間距。
-牌面圖片使用固定寬高搭配 object-fit: contain，確保圖片不會被拉寬、不會裁切，也不會再把後續文字擠出畫面。
-這段只影響下載／分享圖片的版面，不會影響首頁、公告視窗、誕生故事按鈕、抽牌流程、牌面介紹或一般結果頁。
-===分享圖片恢復小卡版面設計 結束===
-*/
 
 .share-card{
     width:1080px !important;
@@ -4603,7 +4761,7 @@ button:active{
         0 3px 9px rgba(255,248,238,.88) !important;
 }
 
-/* 恢復截圖裡小巧的牌位標籤 */
+
 .share-card-position-text{
     display:inline-flex !important;
     align-items:center !important;
@@ -4668,7 +4826,7 @@ button:active{
     text-align:center !important;
 }
 
-/* 單張牌：恢復成中等尺寸，不再把牌放到滿版 */
+
 .share-card.spread-1 .share-content{
     top:365px !important;
     bottom:290px !important;
@@ -4725,7 +4883,7 @@ button:active{
     font-size:34px !important;
 }
 
-/* 三張牌：恢復成截圖裡小而精緻的橫向排列 */
+
 .share-card.spread-2 .share-content,
 .share-card.spread-3 .share-content{
     top:365px !important;
@@ -4776,7 +4934,7 @@ button:active{
     line-height:1.15 !important;
 }
 
-/* 四到六張牌 */
+
 .share-card.spread-6 .share-content{
     top:330px !important;
     bottom:290px !important;
@@ -4837,7 +4995,7 @@ button:active{
     letter-spacing:0 !important;
 }
 
-/* 七到九張牌 */
+
 .share-card.spread-9 .share-content{
     top:318px !important;
     bottom:292px !important;
@@ -4896,7 +5054,7 @@ button:active{
     line-height:1.05 !important;
 }
 
-/* 十張以上 */
+
 .share-card.spread-many .share-content{
     top:310px !important;
     bottom:292px !important;
@@ -4956,19 +5114,9 @@ button:active{
     line-height:1.05 !important;
 }
 
-/* ===== 分享圖片恢復小卡版面設計 r1.9.18 結束 ===== */
 
+/* 開發者資訊 */
 
-/* ===== 版本確認標記樣式 r1.9.19 開始 ===== */
-
-/*
-===版本確認標記樣式 開始===
-這一段 CSS 是用來顯示 Ray Tarot v1.9.25 的版本確認標記。
-主頁底部會出現小字版本號，分享圖片右下角也會出現小字版本號。
-用途是確認手機目前是否真的吃到最新版檔案，避免瀏覽器快取或舊資料夾造成測試結果不準。
-這段只影響版本標記顯示，不會影響抽牌、牌面介紹、誕生故事、公告視窗或分享圖片主要排版。
-===版本確認標記樣式 結束===
-*/
 
 .app-version-badge{
     margin:12px auto 0;
@@ -5000,19 +5148,9 @@ button:active{
     pointer-events:none;
 }
 
-/* ===== 版本確認標記樣式 r1.9.19 結束 ===== */
 
+/* 分享圖片 */
 
-/* ===== 分享圖片 v1.9.20 版本標記與預覽限制 開始 ===== */
-
-/*
-===分享圖片 v1.9.20 版本標記與預覽限制 開始===
-這一段 CSS 是用來確認分享圖片是否吃到 v1.9.20 新版。
-分享圖右下角會顯示 Ray Tarot v1.9.25。
-同時限制預覽視窗中的圖片高度，避免只是預覽畫面被放太大而誤判成分享圖跑版。
-這段只影響分享圖版本標記與預覽顯示，不影響抽牌功能。
-===分享圖片 v1.9.20 版本標記與預覽限制 結束===
-*/
 
 .share-card::after{
     content:"Ray Tarot v1.9.25" !important;
@@ -5031,28 +5169,13 @@ button:active{
     margin:0 auto !important;
 }
 
-/* ===== 分享圖片 v1.9.20 版本標記與預覽限制 結束 ===== */
 
-
-/* ===== 分享圖片視覺精修 r1.9.22 開始 ===== */
-
-/*
-===分享圖片視覺精修 開始===
-這一段 CSS 是用來微調分享圖片的視覺質感。
-用途是移除牌位文字的膠囊框，讓「答案、今日牌卡、過去、現在、未來」這些文字回到乾淨純文字樣式。
-同時把上方牌陣名稱、日期、問題的資訊框改成更細緻的奶茶透明框，避免看起來像厚重白色條。
-另外移除分享圖右下角版本號，讓正式分享圖片更乾淨。
-這段只調整分享圖片外觀，不改變牌面尺寸、不改變牌陣排列、不影響抽牌流程。
-===分享圖片視覺精修 結束===
-*/
-
-/* 移除分享圖右下角版本號 */
 .share-card::after{
     content:none !important;
     display:none !important;
 }
 
-/* 上方資訊框：改成輕薄精緻的奶茶透明框 */
+
 .share-question{
     background:
         linear-gradient(180deg,rgba(255,253,249,.78),rgba(248,235,218,.52)) !important;
@@ -5064,7 +5187,7 @@ button:active{
     overflow:hidden !important;
 }
 
-/* 如果舊版有白色橫條或裝飾，全部關掉 */
+
 .share-question::before,
 .share-question::after{
     content:none !important;
@@ -5089,14 +5212,14 @@ button:active{
     text-shadow:none !important;
 }
 
-/* 保留牌陣標題兩側小星星，但降低存在感 */
+
 .share-meta-title::before,
 .share-meta-title::after{
     color:rgba(173,126,66,.48) !important;
     text-shadow:none !important;
 }
 
-/* 牌位文字：取消膠囊框，改為純文字 */
+
 .share-card-position-text{
     display:block !important;
     width:100% !important;
@@ -5125,18 +5248,6 @@ button:active{
     box-shadow:none !important;
 }
 
-/* ===== 分享圖片視覺精修 r1.9.22 結束 ===== */
-
-
-/* ===== 分享預覽視窗按鈕收納修正 r1.9.22 開始 ===== */
-
-/*
-===分享預覽視窗按鈕收納修正 開始===
-這一段 CSS 是用來修正分享圖片預覽視窗中 X 關閉按鈕與下載圖片按鈕跑出視窗外的問題。
-用途是讓預覽視窗改成垂直 flex 排版：上方標題固定、圖片限制高度、下載按鈕固定留在下方，X 按鈕收進視窗右上角。
-這段只影響分享圖片產生後的預覽視窗，不影響實際下載圖片尺寸，也不影響抽牌或其他彈窗。
-===分享預覽視窗按鈕收納修正 結束===
-*/
 
 #imagePreviewModal{
     padding:18px 16px !important;
@@ -5213,39 +5324,18 @@ button:active{
     text-align:center !important;
 }
 
-/* ===== 分享預覽視窗按鈕收納修正 r1.9.22 結束 ===== */
 
+/* 開發者資訊 */
 
-/* ===== 主頁版本標記隱藏 r1.9.22 開始 ===== */
-
-/*
-===主頁版本標記隱藏 開始===
-這一段 CSS 是用來隱藏測試用的主頁版本標記。
-前一版為了確認是否吃到新版，曾在主頁底部顯示 Ray Tarot 版本號。
-現在已確認新版有生效，所以正式版先隱藏版本標記，避免影響主頁視覺。
-這段只隱藏版本文字，不影響任何功能。
-===主頁版本標記隱藏 結束===
-*/
 
 .app-version-badge{
     display:none !important;
 }
 
-/* ===== 主頁版本標記隱藏 r1.9.22 結束 ===== */
+
+/* 分享圖片 */
 
 
-/* ===== 分享頁可開啟恢復與視覺修正 r1.9.25 開始 ===== */
-
-/*
-===分享頁可開啟恢復與視覺修正 開始===
-這一段 CSS 是用來恢復分享圖片預覽頁可以正常開啟。
-上一版 Canvas 直接繪圖在部分手機本機檔案環境會失敗，因此此版恢復 html2canvas 產生分享圖的方式。
-這段只調整分享圖外觀與預覽視窗，不改動抽牌流程。
-修正內容包含：移除右下角版本號、取消牌位文字膠囊框、精修上方牌陣日期問題框、把 X 與下載按鈕收回預覽視窗內。
-===分享頁可開啟恢復與視覺修正 結束===
-*/
-
-/* 移除測試版本號 */
 .share-card::after{
     content:none !important;
     display:none !important;
@@ -5255,7 +5345,7 @@ button:active{
     display:none !important;
 }
 
-/* 牌位文字取消膠囊框 */
+
 .share-card-position-text{
     display:block !important;
     width:100% !important;
@@ -5283,7 +5373,7 @@ button:active{
     box-shadow:none !important;
 }
 
-/* 上方資訊框精修 */
+
 .share-question{
     background:
         linear-gradient(180deg,rgba(255,253,249,.78),rgba(248,235,218,.52)) !important;
@@ -5319,7 +5409,7 @@ button:active{
     text-shadow:none !important;
 }
 
-/* 分享圖片預覽視窗：按鈕不要跑出畫面 */
+
 #imagePreviewModal{
     padding:18px 16px !important;
     box-sizing:border-box !important;
@@ -5395,19 +5485,10 @@ button:active{
     text-align:center !important;
 }
 
-/* ===== 分享頁可開啟恢復與視覺修正 r1.9.25 結束 ===== */
+
+/* Ray Tarot 誕生故事 */
 
 
-/* ===== 誕生故事標題不分行 r1.9.30 開始 ===== */
-
-/*
-===誕生故事標題不分行 開始===
-這一段 CSS 是用來修正 Ray Tarot 誕生故事彈窗的主標題換行問題。
-用途是讓「Ray Tarot 的誕生故事」盡量維持單行顯示，避免被拆成兩行，
-同時稍微縮小字級與左右留白，讓手機版畫面看起來更整齊。
-這段只影響誕生故事彈窗標題，不影響其他頁面與功能。
-===誕生故事標題不分行 結束===
-*/
 .story-modal-content h2{
     margin:0 18px 10px !important;
     color:#5C3F2C !important;
@@ -5426,19 +5507,8 @@ button:active{
         font-size:18px !important;
     }
 }
-/* ===== 誕生故事標題不分行 r1.9.30 結束 ===== */
 
 
-/* ===== 故事視窗精修 r1.9.31 開始 ===== */
-
-/*
-===故事視窗精修 開始===
-這一段 CSS 是用來精修 Ray Tarot 誕生故事視窗。
-用途是讓故事視窗看起來更柔和、更有層次，並優化副標、段落間距與關閉按鈕位置。
-另外保留主標題單行顯示，避免手機版再次自動分行。
-這段只影響誕生故事視窗，不影響分享圖、抽牌與其他頁面版面。
-===故事視窗精修 結束===
-*/
 .story-modal-box{
     width:min(408px,100%) !important;
     max-height:84vh !important;
@@ -5554,22 +5624,8 @@ button:active{
         line-height:1.9 !important;
     }
 }
-/* ===== 故事視窗精修 r1.9.31 結束 ===== */
 
-    
 
-/* ===== 故事視窗防跑版修正 r1.9.36 開始 ===== */
-
-/*
-===故事視窗防跑版修正 開始===
-這一段 CSS 是用來修正 Ray Tarot 誕生故事視窗在手機上跑版的問題。
-用途是讓故事視窗固定置中、限制最大高度，並讓內文區域可以在卡片內滑動。
-同時調整標題、副標與段落字級，避免卡片超出螢幕底部。
-這段只影響誕生故事視窗，不影響分享圖、抽牌流程、牌面介紹或其他功能。
-===故事視窗防跑版修正 結束===
-*/
-
-/* 故事視窗背景：置中，不讓卡片貼到上下邊界 */
 .story-modal{
     padding:22px 18px !important;
     box-sizing:border-box !important;
@@ -5578,7 +5634,7 @@ button:active{
     overflow:hidden !important;
 }
 
-/* 故事卡片：限制高度，避免超出手機螢幕 */
+
 .story-modal-box{
     position:relative !important;
     width:min(392px,100%) !important;
@@ -5592,7 +5648,7 @@ button:active{
     overflow:hidden !important;
 }
 
-/* X 按鈕固定在卡片內，不壓到標題 */
+
 .story-modal-close{
     position:absolute !important;
     top:12px !important;
@@ -5614,7 +5670,7 @@ button:active{
     box-shadow:0 8px 18px rgba(58,38,25,.24) !important;
 }
 
-/* 內容區可在卡片內滑動，整張卡片不再往下爆版 */
+
 .story-modal-content{
     max-height:calc(100dvh - 92px) !important;
     box-sizing:border-box !important;
@@ -5625,7 +5681,7 @@ button:active{
     -webkit-overflow-scrolling:touch !important;
 }
 
-/* ABOUT 標籤置中並縮小一點 */
+
 .story-kicker{
     margin:0 44px 10px !important;
     color:#B8793A !important;
@@ -5637,7 +5693,7 @@ button:active{
     text-transform:uppercase !important;
 }
 
-/* 主標題：保持單行，但不要撐爆 */
+
 .story-modal-content h2{
     margin:0 42px 10px !important;
     color:#5C3F2C !important;
@@ -5651,7 +5707,7 @@ button:active{
     overflow-wrap:normal !important;
 }
 
-/* 副標：改回比較穩的兩行內，不要超大 */
+
 .story-subtitle{
     margin:0 auto !important;
     max-width:290px !important;
@@ -5663,7 +5719,7 @@ button:active{
     text-align:center !important;
 }
 
-/* 分隔線距離縮短 */
+
 .story-divider{
     width:72px !important;
     height:1px !important;
@@ -5671,7 +5727,7 @@ button:active{
     background:linear-gradient(90deg,transparent,rgba(201,155,95,.92),transparent) !important;
 }
 
-/* 內文字級與段落間距縮回穩定範圍 */
+
 .story-modal-content p{
     margin:0 0 14px !important;
     color:#5F4A3A !important;
@@ -5690,7 +5746,7 @@ button:active{
     text-align:center !important;
 }
 
-/* 小螢幕再收斂一次，避免 Android 瀏覽器工具列造成高度不足 */
+
 @media (max-width:420px){
     .story-modal{
         padding:18px 16px !important;
@@ -5744,19 +5800,9 @@ button:active{
     }
 }
 
-/* ===== 故事視窗防跑版修正 r1.9.36 結束 ===== */
 
-    
+/* Ray Tarot 誕生故事 */
 
-/* ===== 故事標題與副標修正 r1.9.36 開始 ===== */
-
-/*
-===故事標題與副標修正 開始===
-這一段 CSS 是用來修正 Ray Tarot 誕生故事視窗的標題與副標。
-用途是讓 Ray Tarot 的英文更有質感，並讓副標置中、縮小且盡量不分行。
-這段只影響故事視窗，不影響分享圖片與抽牌流程。
-===故事標題與副標修正 結束===
-*/
 
 .story-modal-content h2{
     margin:0 44px 10px !important;
@@ -5804,18 +5850,9 @@ button:active{
     }
 }
 
-/* ===== 故事標題與副標修正 r1.9.36 結束 ===== */
 
+/* Ray Tarot 誕生故事 */
 
-/* ===== 誕生故事標題區精修 r1.9.37 開始 ===== */
-
-/*
-===誕生故事標題區精修 開始===
-這一段 CSS 只調整 Ray Tarot 誕生故事彈窗上方標題區。
-用途是讓 ABOUT Ray Tarot 置中並縮小、主標題更有質感且稍微放大、副標題置中並縮小。
-這段只影響誕生故事視窗標題區，不影響分享圖片、抽牌流程、牌面介紹或其他功能。
-===誕生故事標題區精修 結束===
-*/
 
 .story-kicker{
     display:block !important;
@@ -5897,18 +5934,9 @@ button:active{
     }
 }
 
-/* ===== 誕生故事標題區精修 r1.9.37 結束 ===== */
 
+/* 分享圖片 */
 
-/* ===== 分享圖片牌面比例修正 r1.9.36 開始 ===== */
-
-/*
-===分享圖片牌面比例修正 開始===
-這一段 CSS 是用來修正分享圖片中牌面被輕微拉寬或變形的問題。
-用途是讓牌面圖片維持原始塔羅牌比例，不改變分享圖整體排版。
-這段只影響分享圖片內的牌面比例，不影響首頁、故事視窗、抽牌流程或一般結果頁。
-===分享圖片牌面比例修正 結束===
-*/
 
 .share-card-item img,
 .share-card.spread-1 .share-card-item img,
@@ -5969,18 +5997,9 @@ button:active{
     border-radius:9px !important;
 }
 
-/* ===== 分享圖片牌面比例修正 r1.9.36 結束 ===== */
 
+/* Ray Tarot 誕生故事 */
 
-
-/* ===== 誕生故事標題區強制修正 r1.9.38 開始 ===== */
-/*
-===誕生故事標題區強制修正 開始===
-這一段只精準修正誕生故事彈窗上方三個文字：ABOUT、主標題、副標題。
-用途是避免前面舊版樣式覆蓋，讓 ABOUT 置中縮小、主標題加大並更有質感、副標題置中且縮小。
-這段不影響抽牌流程、分享圖片、牌組資料或其他頁面。
-===誕生故事標題區強制修正 結束===
-*/
 #storyModal .story-modal-content > .story-kicker{
     display:block !important;
     width:100% !important;
@@ -6070,18 +6089,8 @@ button:active{
         font-size:11.7px !important;
     }
 }
-/* ===== 誕生故事標題區強制修正 r1.9.38 結束 ===== */
 
 
-
-/* ===== Ray Tarot 誕生故事內文分行置中 r1.9.39 開始 ===== */
-/*
-===誕生故事內文分行置中 開始===
-這一段只覆蓋誕生故事彈窗內文與 Created by Ray 的排版。
-用途是讓故事內容改成短句分行、全部置中，減少標點符號帶來的文字擁擠感。
-不影響抽牌流程、牌組資料、分享圖片或其他頁面。
-===誕生故事內文分行置中 結束===
-*/
 #storyModal .story-modal-content > .story-section-title{
     display:block !important;
     width:100% !important;
@@ -6121,18 +6130,8 @@ button:active{
         margin-bottom:17px !important;
     }
 }
-/* ===== Ray Tarot 誕生故事內文分行置中 r1.9.39 結束 ===== */
 
 
-
-/* ===== Ray Tarot 主頁誕生故事入口 A 版優化 r1.9.40 開始 ===== */
-/*
-===主頁誕生故事入口 A 版優化 開始===
-這一段只覆蓋首頁「Ray Tarot 的誕生故事」入口卡片。
-用途是套用 A 版本副標文字排版，讓左側圖示、中央文字與右側按鈕比例更順。
-不影響誕生故事彈窗內文、抽牌流程、牌組資料、分享圖片或其他頁面。
-===主頁誕生故事入口 A 版優化 結束===
-*/
 .home-story-entry.home-story-entry-wide{
     grid-template-columns:40px minmax(0,1fr) auto !important;
     column-gap:11px !important;
@@ -6241,17 +6240,8 @@ button:active{
         font-size:11.5px !important;
     }
 }
-/* ===== Ray Tarot 主頁誕生故事入口 A 版優化 r1.9.40 結束 ===== */
 
 
-/* ===== Ray Tarot 主頁誕生故事入口精修 r1.9.41 開始 ===== */
-/*
-===主頁誕生故事入口精修 開始===
-這一段只微調首頁「Ray Tarot 的誕生故事」入口卡片的版面比例。
-用途是讓圖示、文字區與閱讀故事按鈕的節奏更平衡，讓整體更精緻順眼。
-這段只影響主頁故事入口，不影響誕生故事彈窗、抽牌功能、牌組資料或分享圖片。
-===主頁誕生故事入口精修 結束===
-*/
 .home-story-entry.home-story-entry-wide{
     grid-template-columns:46px minmax(0,1fr) auto !important;
     column-gap:14px !important;
@@ -6368,10 +6358,8 @@ button:active{
         font-size:12px !important;
     }
 }
-/* ===== Ray Tarot 主頁誕生故事入口精修 r1.9.41 結束 ===== */
-
 </style>
-<!-- ================= Google Analytics 開始 ================= -->
+<!-- 網站流量統計（Google Analytics） -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NJ1ZM10F2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -6384,12 +6372,12 @@ button:active{
         gtag('config', 'G-9NJ1ZM10F2');
 
     </script>
-    <!-- ================= Google Analytics 結束 ================= -->
+
 </head>
 
 <body>
 
-    <!-- ================= 公告視窗 ================= -->
+    <!-- 公告與提醒視窗 -->
     <div id="noticeModal" class="notice-modal">
         <div class="notice-box">
             <h2>🔮 公告 🔮</h2>
@@ -6409,12 +6397,6 @@ button:active{
                     <span class="tag">🔮 我要占卜</span>
                     <span class="notice-desc">輸入問題後選擇牌陣</span>
                     <span class="notice-desc">探索事件背後的訊息與方向</span>
-                </p>
-
-                <p class="notice-item">
-                    <span class="tag">📖 塔羅日記</span>
-                    <span class="notice-desc">建立自己與塔羅牌的連結</span>
-                    <span class="notice-desc">固定使用 <span class="highlight">正位牌</span></span>
                 </p>
 
                 <p class="notice-item">
@@ -6443,23 +6425,16 @@ button:active{
             </button>
         </div>
     </div>
-    <!-- ================= 公告視窗結束 ================= -->
+
 
     <div class="app">
 
-        <!-- ================= 模式選擇首頁 ================= -->
+        <!-- 首頁 -->
         <section id="homeScreen" class="screen active">
             <h1>Ray Tarot</h1>
 
-            <!-- ===== Ray Tarot 主頁誕生故事按鈕 開始 ===== -->
-            <!--
-            ===主頁誕生故事按鈕 開始===
-            這一段是主頁上方的「Ray Tarot 的誕生故事」橫向按鈕卡片。
-            它的用途是做成左側圓形圖示、中間標題與副標、右側深棕色閱讀按鈕的版面。
-            點擊整張卡片或右側「閱讀故事」按鈕，都會開啟 storyModal 誕生故事彈窗。
-            這段只負責主頁故事入口的畫面與點擊入口，不會影響今日運勢、我要占卜、塔羅日記、牌面介紹或分享圖片功能。
-            ===主頁誕生故事按鈕 結束===
-            -->
+            <!-- 首頁誕生故事入口 -->
+
             <div class="home-story-entry home-story-entry-wide" role="button" tabindex="0" onclick="openStoryModalFallback();" onkeydown="if(event.key==='Enter'||event.key===' '){openStoryModalFallback();}">
                 <div class="home-story-entry-icon-wrap">
                     <span class="home-story-entry-icon">✨</span>
@@ -6474,37 +6449,43 @@ button:active{
                     閱讀故事
                 </button>
             </div>
-            <!-- ===== Ray Tarot 主頁誕生故事按鈕 結束 ===== -->
+
 
             <div class="panel">
-                <h2>請選擇模式</h2>
+                <h2>與自己對話的方式</h2>
 
                 <div class="spread-grid">
-                    <div class="spread-card" onclick="startDailyFortune()">
+                    <div id="dailyFortuneHomeEntry" class="spread-card" onclick="startDailyFortune()">
                         <h3>☀️ 今日運勢</h3>
                         <p>每天一張牌，與自己對話一分鐘</p>
                     </div>
 
-                    <div class="spread-card" onclick="startDivination()">
+                    <div id="yearlyHomeEntry" class="spread-card" onclick="startYearlyFortune()">
+                        <h3 id="yearlyHomeTitle"></h3>
+                        <p id="yearlyHomeSubtitle"></p>
+                        <small class="yearly-home-date"></small>
+                    </div>
+
+                    <div id="divinationHomeEntry" class="spread-card" onclick="startDivination()">
                         <h3>🔮 我要占卜</h3>
                         <p>選擇牌陣並開始占卜</p>
                     </div>
 
-                    <div class="spread-card" onclick="startDiary()">
+                    <div id="diaryHomeEntry" class="spread-card" onclick="startDiary()">
                         <h3>📖 塔羅日記</h3>
                         <p>抽出今日主題牌</p>
                     </div>
 
-                    <div class="spread-card" onclick="startCardLibrary()">
+                    <div id="cardLibraryHomeEntry" class="spread-card" onclick="startCardLibrary()">
                         <h3>🃏 牌面介紹</h3>
                         <p>依分類瀏覽完整牌組</p>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- ================= 模式選擇首頁結束 ================= -->
 
-        <!-- ================= 今日運勢區塊 ================= -->
+
+        <!-- 今日運勢 -->
         <section id="dailyFortuneScreen" class="screen">
             <h1>今日運勢</h1>
 
@@ -6532,6 +6513,15 @@ button:active{
 
                 <div id="dailyResult" class="daily-result" style="display:none;"></div>
 
+                <div id="dailyReminderBox" class="result-reminder-box" aria-label="Ray Tarot 小提醒" style="display:none;">
+                    <div class="result-reminder-title"> Ray Tarot 小提醒</div>
+                    <p class="result-reminder-text">
+                        塔羅是提醒，也是探索自我的方式。<br>
+                        每一張牌都承載著當下的訊息，<br>
+                        請溫柔看待它帶來的指引。
+                    </p>
+                </div>
+
                 <button id="dailyCopyButton" onclick="copyDailyFortuneContent()" style="display:none;">
                     📋 複製今日運勢內容
                 </button>
@@ -6545,10 +6535,9 @@ button:active{
                 </button>
             </div>
         </section>
-        <!-- ================= 今日運勢區塊結束 ================= -->
 
 
-        <!-- ================= 牌面介紹區塊 ================= -->
+        <!-- 牌面介紹 -->
         <section id="cardLibraryScreen" class="screen">
             <h1>牌面介紹</h1>
 
@@ -6593,9 +6582,9 @@ button:active{
                 </button>
             </div>
         </section>
-        <!-- ================= 牌面介紹區塊結束 ================= -->
 
-        <!-- ================= 問題輸入頁 ================= -->
+
+        <!-- 占卜問題輸入 -->
         <section id="questionScreen" class="screen">
             <h1>輸入問題</h1>
 
@@ -6618,9 +6607,9 @@ button:active{
                 </button>
             </div>
         </section>
-        <!-- ================= 問題輸入頁結束 ================= -->
 
-        <!-- ================= 牌陣選擇頁 ================= -->
+
+        <!-- 牌陣選擇 -->
         <section id="spreadScreen" class="screen">
             <h1>選擇牌陣</h1>
 
@@ -6655,11 +6644,47 @@ button:active{
                 ← 返回上一頁
             </button>
         </section>
-        <!-- ================= 牌陣選擇頁結束 ================= -->
 
-        <!-- ================= 洗牌畫面 ================= -->
+
+        <!-- 年度流年 -->
+        <section id="yearlyIntroScreen" class="screen yearly-intro-screen">
+            <h1 data-yearly-text="title">🌙 年度流年</h1>
+
+            <div class="panel yearly-intro-panel">
+                <div class="yearly-intro-main">
+                    <h2 data-yearly-text="title">🌙 年度流年</h2>
+
+                    <p class="yearly-intro-lead">
+                        十二張牌對應一月至十二月<br>
+                        <span data-yearly-text="introEnergy">陪你看見未來一年的能量流動</span>
+                    </p>
+
+                    <p>
+                        這份指引將綜合感情<br>
+                        人際、工作、財運與重要提醒<br>
+                        作為你一整年的溫柔參考
+                    </p>
+
+                    <p>
+                        請在安靜、專注的狀態下開始<br>
+                        <span data-yearly-text="introMap">讓牌卡陪你慢慢展開這一年的能量地圖</span>
+                    </p>
+                </div>
+
+                <button onclick="beginYearlyFortune()">
+                    開始占卜
+                </button>
+
+                <button onclick="showScreen('homeScreen')">
+                    ← 返回上一頁
+                </button>
+            </div>
+        </section>
+
+
+        <!-- 洗牌 -->
         <section id="shuffleScreen" class="screen">
-            <h1>請先洗牌</h1>
+            <h1 id="shuffleTitle">請先洗牌</h1>
 
             <div class="deck-area">
                 <div id="shuffleCards" class="shuffle-cards"></div>
@@ -6669,11 +6694,11 @@ button:active{
                 </div>
             </div>
 
-            <p class="hint">
+            <p id="shuffleHint" class="hint">
                 點擊牌堆洗牌，完成後進入選牌。
             </p>
 
-            <button onclick="goToDrawScreen()">
+            <button id="goToDrawButton" onclick="goToDrawScreen()">
                 完成洗牌
             </button>
 
@@ -6681,11 +6706,13 @@ button:active{
                 ← 返回上一頁
             </button>
         </section>
-        <!-- ================= 洗牌畫面結束 ================= -->
 
-        <!-- ================= 選牌畫面 ================= -->
+
+        <!-- 選牌 -->
         <section id="drawScreen" class="screen">
             <h1 id="drawTitle">請選牌</h1>
+
+            <p id="drawDescription" class="hint" style="display:none;"></p>
 
             <p id="selectedCount" class="hint">
                 已選 0 張
@@ -6697,7 +6724,7 @@ button:active{
 
             <div id="cardSelection" class="card-selection"></div>
 
-            <button onclick="finishSelection()">
+            <button id="finishSelectionButton" onclick="finishSelection()">
                 選擇完成
             </button>
 
@@ -6705,11 +6732,13 @@ button:active{
                 ← 返回上一頁
             </button>
         </section>
-        <!-- ================= 選牌畫面結束 ================= -->
 
-        <!-- ================= 結果畫面 ================= -->
+
+        <!-- 占卜結果 -->
         <section id="resultScreen" class="screen">
-            <h1>占卜結果</h1>
+            <h1 id="resultTitle">占卜結果</h1>
+
+            <p id="resultStatusText" class="hint" style="display:none;"></p>
 
             <div id="resultGuide" class="result-guide">
                 ⇠ 左右滑動牌面 · 點擊可放大
@@ -6717,7 +6746,16 @@ button:active{
 
             <div id="result"></div>
 
-            <div class="result-reminder-box" aria-label="Ray Tarot 小提醒">
+            <div id="yearlyLimitedReminder" class="result-reminder-box" aria-label="年度流年小提醒" style="display:none;">
+                <div class="result-reminder-title">🌙 年度流年小提醒</div>
+                <p class="result-reminder-text">
+                    年度流年牌陣為限時開放功能。<br>
+                    建議下載保存占卜結果，<br>
+                    <span data-yearly-text="limitedReminder">作為今年的年度能量指引。</span>
+                </p>
+            </div>
+
+            <div id="generalResultReminder" class="result-reminder-box" aria-label="Ray Tarot 小提醒">
                 <div class="result-reminder-title"> Ray Tarot 小提醒</div>
                 <p class="result-reminder-text">
                     塔羅是提醒，也是探索自我的方式。<br>
@@ -6728,23 +6766,27 @@ button:active{
 
             <div id="aiReadingBox"></div>
 
-            <button onclick="copyReadingContent()">
+            <button id="copyReadingButton" onclick="copyReadingContent()">
                 ✨ 取得解讀內容 ✨
             </button>
 
-            <button onclick="downloadShareImage()">
+            <button id="downloadShareButton" onclick="downloadShareImage()">
                 📷 下載結果圖
             </button>
 
-            <button onclick="restartReading()">
+            <button id="restartReadingButton" onclick="restartReading()">
                 ← 返回首頁
             </button>
+
+            <button id="yearlyTestResetButton" class="yearly-test-reset-button" onclick="clearYearlyTestRecord()" style="display:none;">
+                🧪 清除流年測試紀錄
+            </button>
         </section>
-        <!-- ================= 結果畫面結束 ================= -->
+
 
     </div>
 
-    <!-- ================= 提示視窗 ================= -->
+    <!-- 提示視窗 -->
     <div id="warningModal" class="notice-modal" style="display:none;">
         <div class="notice-box">
             <h2>🔮 提醒</h2>
@@ -6758,20 +6800,10 @@ button:active{
             </button>
         </div>
     </div>
-    <!-- ================= 提示視窗結束 ================= -->
 
 
+    <!-- Ray Tarot 誕生故事 -->
 
-
-    <!-- ===== Ray Tarot 誕生故事視窗 開始 ===== -->
-    <!--
-    ===誕生故事彈窗內容 開始===
-    這一段是 Ray Tarot 的誕生故事彈窗內容。
-    彈窗預設隱藏，使用者點擊首頁或牌面介紹頁的故事入口後才會顯示。
-    內容包含故事標題、故事正文、Created by Ray 簽名，以及右上角 X 關閉按鈕。
-    這段只負責故事彈窗內容，不會影響抽牌、牌陣結果、分享圖片或牌面介紹分類。
-    ===誕生故事彈窗內容 結束===
-    -->
     <div id="storyModal" class="story-modal" style="display:none;" onclick="closeStoryModalFallback();">
         <div class="story-modal-box" onclick="event.stopPropagation();">
             <button class="story-modal-close" type="button" onclick="closeStoryModalFallback();">
@@ -6858,9 +6890,9 @@ button:active{
             </div>
         </div>
     </div>
-    <!-- ===== Ray Tarot 誕生故事視窗 結束 ===== -->
 
-    <!-- ===== 牌面介紹專用放大牌義視窗 開始 ===== -->
+
+    <!-- 牌面介紹放大視窗 -->
     <div id="libraryCardModal" class="library-card-modal" ontouchstart="handleLibraryModalTouchStart(event)" ontouchend="handleLibraryModalTouchEnd(event)">
         <button class="library-modal-close" type="button" onclick="event.stopPropagation(); closeLibraryCardModal();">
             ✕
@@ -6878,9 +6910,9 @@ button:active{
             <div id="libraryModalMeaning" class="library-modal-meaning"></div>
         </div>
     </div>
-    <!-- ===== 牌面介紹專用放大牌義視窗 結束 ===== -->
 
-    <!-- ================= 牌面放大視窗 ================= -->
+
+    <!-- 牌面放大視窗 -->
     <div id="cardModal" class="card-modal" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event)">
         <button class="close-modal" onclick="event.stopPropagation(); closeCardModal();">
             ✕
@@ -6889,43 +6921,37 @@ button:active{
         <div class="card-modal-content">
             <img id="cardModalImg" alt="放大的塔羅牌">
 
-            <!-- ===== 牌面介紹牌義區塊 開始 ===== -->
+            <!-- 牌義內容 -->
             <div id="cardModalMeaning" class="card-modal-meaning" style="display:none;"></div>
-            <!-- ===== 牌面介紹牌義區塊 結束 ===== -->
+
         </div>
 
         <div id="swipeHint" class="swipe-hint">
             ⇠ 滑動切換牌面 ⇢
         </div>
     </div>
-    <!-- ================= 牌面放大視窗結束 ================= -->
 
-    <!-- ===== 下載結果圖精緻模板 開始 ===== -->
+
+    <!-- 分享圖片模板 -->
     <div id="shareCard" class="share-card">
         <div class="share-content">
             <div id="shareQuestion" class="share-question"></div>
             <div id="shareCards" class="share-cards"></div>
         </div>
     </div>
-    <!-- ===== 下載結果圖精緻模板 結束 ===== -->
 
-    <!-- ================= 載入提示 ================= -->
+
+    <!-- 載入提示 -->
     <div id="loadingToast" class="loading-toast">
         📷 正在產生結果圖...
     </div>
-    <!-- ================= 載入提示結束 ================= -->
 
-    <!-- ================= 外部工具與主程式 ================= -->
+
+    <!-- 程式外部工具與主程式 -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    
-    <!-- ===== 誕生故事按鈕保險開關 開始 ===== -->
-    <!--
-    ===誕生故事按鈕保險開關 開始===
-    這一段是主頁誕生故事按鈕的保險用 JavaScript。
-    用途是在 外部程式檔 尚未載入、手機瀏覽器吃到舊快取，或外部 JS 延遲時，仍然可以開啟與關閉 storyModal。
-    它只負責 Ray Tarot 誕生故事彈窗的開關，不會影響抽牌、分享圖片、牌面介紹或其他模式功能。
-    ===誕生故事按鈕保險開關 結束===
-    -->
+
+    <!-- 誕生故事備援開關 -->
+
     <script>
         function openStoryModalFallback(){
 
@@ -6944,10 +6970,10 @@ button:active{
             }
         }
     </script>
-    <!-- ===== 誕生故事按鈕保險開關 結束 ===== -->
-<script>
-// ================= 完整 78 張牌資料 =================
 
+<script>
+
+// 78 張塔羅牌資料
 const cards = [
     // 大阿爾克納
     { name:"愚者", image:"cards/00_fool.jpg" },
@@ -7038,8 +7064,8 @@ const cards = [
     { name:"權杖國王", image:"cards/w14_king.jpg" }
 ];
 
-// ================= 全域狀態 =================
 
+// 全域狀態與儲存設定
 let shuffledDeck = [];
 let selectedCards = [];
 let spreadType = 3;
@@ -7049,22 +7075,395 @@ let dailyMode = false;
 let currentModalIndex = 0;
 let modalCards = [];
 let touchStartX = 0;
-// ===== 牌義彈窗垂直滑動判斷 開始 =====
 let touchStartY = 0;
-// ===== 牌義彈窗垂直滑動判斷 結束 =====
 let swipeHintShown = false;
 let resultHintShown = false;
 let currentLibraryCards = [];
-// ===== 牌面介紹專用彈窗狀態 開始 =====
 let currentLibraryModalIndex = 0;
 let libraryTouchStartX = 0;
 let libraryTouchStartY = 0;
-// ===== 牌面介紹專用彈窗狀態 結束 =====
 
 const DAILY_STORAGE_KEY = "rayTarotDailyFortune";
 
-// ================= 畫面切換功能 =================
 
+// 首頁功能開關
+// true = 顯示入口，false = 隱藏入口；關閉入口不會刪除功能或既有資料。
+const FEATURE_CONFIG = {
+    // 今日運勢
+    dailyFortune: {
+        enabled:true
+    },
+
+    // 年度流年｜設定
+    yearlyFortune: {
+        enabled:false,
+
+        // 流年年份
+        year:"2027",
+
+        // 首頁顯示文字
+        homeSubtitle:"限時開放｜新年能量指引",
+        homePeriodText:"開放期間｜2026.12.01－2027.02.28",
+
+        // 儲存資料使用的名稱前綴
+        storageKeyPrefix:"rayTarotYearlyFortune_",
+
+        // 自動開放時間；留空代表不限制
+        openStart:"",
+
+        // 自動結束時間；留空代表不限制
+        openEnd:"",
+
+        // 測試模式；正式開放時可改為 false
+        testMode:true
+    },
+
+    // 我要占卜
+    divination: {
+        enabled:true
+    },
+
+    // 塔羅日記
+    diary: {
+        enabled:false
+    },
+
+    // 牌面介紹
+    cardLibrary: {
+        enabled:true
+    }
+};
+
+// 年度流年沿用同一份設定，避免重複維護。
+const YEARLY_CONFIG = FEATURE_CONFIG.yearlyFortune;
+
+
+// 年度流年｜功能程式
+const YEARLY_YEAR = String(YEARLY_CONFIG.year);
+const YEARLY_STORAGE_KEY = `${YEARLY_CONFIG.storageKeyPrefix}${YEARLY_YEAR}`;
+
+let yearlyMode = false;
+let yearlyResultLoaded = false;
+
+function getYearlyHomeTitle(){
+    return `🌙 ${YEARLY_YEAR} 年度流年`;
+}
+
+function getYearlyTitle(){
+    return "🌙 年度流年";
+}
+
+function getYearlyResultTitle(){
+    return "🌙 年度流年結果";
+}
+
+function getYearlySpreadName(){
+    return "年度流年牌陣";
+}
+
+function getYearlyQuestionText(){
+    return "年度流年";
+}
+
+function getYearlyDownloadFilename(){
+    return `RayTarot_${YEARLY_YEAR}_Yearly_Fortune.png`;
+}
+
+function isYearlyFortuneOpen(){
+    if(!YEARLY_CONFIG.enabled){
+        return false;
+    }
+
+    const now = new Date();
+
+    if(YEARLY_CONFIG.openStart){
+        const start = new Date(YEARLY_CONFIG.openStart);
+        if(!Number.isNaN(start.getTime()) && now < start){
+            return false;
+        }
+    }
+
+    if(YEARLY_CONFIG.openEnd){
+        const end = new Date(YEARLY_CONFIG.openEnd);
+        if(!Number.isNaN(end.getTime()) && now > end){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function updateYearlyTexts(){
+    const yearlyHomeTitle = document.getElementById("yearlyHomeTitle");
+    const yearlyHomeSubtitle = document.getElementById("yearlyHomeSubtitle");
+    const yearlyHomeDate = document.querySelector(".yearly-home-date");
+
+    if(yearlyHomeDate){
+        yearlyHomeDate.innerText = YEARLY_CONFIG.homePeriodText;
+    }
+
+    if(yearlyHomeTitle){
+        yearlyHomeTitle.innerText = getYearlyHomeTitle();
+    }
+
+    if(yearlyHomeSubtitle){
+        yearlyHomeSubtitle.innerText = YEARLY_CONFIG.homeSubtitle;
+    }
+
+    document.querySelectorAll("[data-yearly-text='title']").forEach(element=>{
+        element.innerText = getYearlyTitle();
+    });
+
+    document.querySelectorAll("[data-yearly-text='introEnergy']").forEach(element=>{
+        element.innerText = "陪你看見未來一年的能量流動";
+    });
+
+    document.querySelectorAll("[data-yearly-text='introMap']").forEach(element=>{
+        element.innerText = "讓牌卡陪你慢慢展開這一年的能量地圖";
+    });
+
+    document.querySelectorAll("[data-yearly-text='limitedReminder']").forEach(element=>{
+        element.innerText = "作為今年的年度能量指引。";
+    });
+}
+
+function updateHomeFeatureEntries(){
+    const featureEntries = [
+        ["dailyFortuneHomeEntry", FEATURE_CONFIG.dailyFortune.enabled],
+        ["divinationHomeEntry", FEATURE_CONFIG.divination.enabled],
+        ["diaryHomeEntry", FEATURE_CONFIG.diary.enabled],
+        ["cardLibraryHomeEntry", FEATURE_CONFIG.cardLibrary.enabled]
+    ];
+
+    featureEntries.forEach(([entryId, enabled])=>{
+        const entry = document.getElementById(entryId);
+
+        if(entry){
+            entry.style.display = enabled ? "" : "none";
+        }
+    });
+}
+
+function updateYearlyHomeEntry(){
+    updateYearlyTexts();
+    updateHomeFeatureEntries();
+
+    const entry = document.getElementById("yearlyHomeEntry");
+
+    if(!entry){
+        return;
+    }
+
+    entry.style.display = isYearlyFortuneOpen() ? "" : "none";
+}
+
+function getYearlyPositions(){
+    return ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
+}
+
+function getSavedYearlyFortune(){
+    try{
+        const raw = localStorage.getItem(YEARLY_STORAGE_KEY);
+
+        if(!raw){
+            return null;
+        }
+
+        const saved = JSON.parse(raw);
+
+        if(!saved || !Array.isArray(saved.cards) || saved.cards.length !== 12){
+            return null;
+        }
+
+        return saved;
+    }catch(error){
+        return null;
+    }
+}
+
+function saveYearlyFortune(){
+    if(!yearlyMode || selectedCards.length !== 12 || getSavedYearlyFortune()){
+        return;
+    }
+
+    const saved = {
+        year:YEARLY_YEAR,
+        createdAt:new Date().toISOString(),
+        cards:selectedCards.map(card=>({
+            name:card.name,
+            image:card.image,
+            reversed:card.reversed
+        }))
+    };
+
+    try{
+        localStorage.setItem(YEARLY_STORAGE_KEY, JSON.stringify(saved));
+    }catch(error){
+        // 儲存失敗時不影響占卜結果顯示
+    }
+}
+
+function clearYearlyTestRecord(){
+    try{
+        localStorage.removeItem(YEARLY_STORAGE_KEY);
+        alert(`已清除 ${YEARLY_YEAR} 年度流年測試紀錄，可以重新測試抽牌。正式上線版請將 YEARLY_CONFIG.testMode 改為 false。`);
+    }catch(error){
+        alert("清除失敗，請改用清除 App / 瀏覽器網站資料。");
+    }
+
+    yearlyMode = false;
+    yearlyResultLoaded = false;
+    selectedCards = [];
+    shuffledDeck = [];
+    hasShuffled = false;
+    updateYearlyHomeEntry();
+    showScreen("homeScreen");
+}
+
+function startYearlyFortune(){
+    if(!isYearlyFortuneOpen()){
+        showWarning(`年度流年目前尚未開放 🌙`);
+        updateYearlyHomeEntry();
+        return;
+    }
+
+    const saved = getSavedYearlyFortune();
+
+    dailyMode = false;
+    yearlyMode = true;
+    yearlyResultLoaded = false;
+    spreadType = 12;
+    spreadKey = "yearly";
+    hasShuffled = false;
+    selectedCards = [];
+    shuffledDeck = [];
+    swipeHintShown = false;
+    resultHintShown = false;
+
+    const questionBox = document.getElementById("userQuestion");
+
+    if(questionBox){
+        questionBox.value = getYearlyQuestionText();
+    }
+
+    if(saved){
+        selectedCards = saved.cards.map(card=>({
+            name:card.name,
+            image:card.image,
+            reversed:card.reversed
+        }));
+        yearlyResultLoaded = true;
+        showScreen("resultScreen");
+        showResult();
+        return;
+    }
+
+    updateYearlyTexts();
+    showScreen("yearlyIntroScreen");
+}
+
+function beginYearlyFortune(){
+    dailyMode = false;
+    yearlyMode = true;
+    yearlyResultLoaded = false;
+    spreadType = 12;
+    spreadKey = "yearly";
+    hasShuffled = false;
+    selectedCards = [];
+    shuffledDeck = [];
+    swipeHintShown = false;
+    resultHintShown = false;
+
+    const questionBox = document.getElementById("userQuestion");
+
+    if(questionBox){
+        questionBox.value = getYearlyQuestionText();
+    }
+
+    updateShuffleScreenText();
+    showScreen("shuffleScreen");
+}
+
+function updateShuffleScreenText(){
+    const shuffleTitle = document.getElementById("shuffleTitle");
+    const shuffleHint = document.getElementById("shuffleHint");
+    const goToDrawButton = document.getElementById("goToDrawButton");
+
+    if(shuffleTitle){
+        shuffleTitle.innerText = "請先洗牌";
+    }
+
+    if(shuffleHint){
+        shuffleHint.innerHTML = yearlyMode
+        ? "點擊塔羅牌面開始洗牌。<br>完成後，將進入年度選牌。"
+        : "點擊牌堆洗牌，完成後進入選牌。";
+    }
+
+    if(goToDrawButton){
+        goToDrawButton.innerText = yearlyMode ? "進入選牌" : "完成洗牌";
+    }
+}
+
+function updateDrawScreenText(){
+    const drawTitle = document.getElementById("drawTitle");
+    const drawDescription = document.getElementById("drawDescription");
+
+    if(drawTitle){
+        drawTitle.innerText = yearlyMode ? "選擇你的年度牌" : "請選牌";
+    }
+
+    if(drawDescription){
+        if(yearlyMode){
+            drawDescription.innerHTML = "請依照直覺選出 12 張牌<br>選牌順序將依序對應一月至十二月<br>不需要想太多<br>讓第一眼被吸引的牌<br>成為這一年的提醒";
+            drawDescription.style.display = "block";
+        }else{
+            drawDescription.innerHTML = "";
+            drawDescription.style.display = "none";
+        }
+    }
+}
+
+function updateResultScreenState(){
+    const resultTitle = document.getElementById("resultTitle");
+    const resultStatusText = document.getElementById("resultStatusText");
+    const downloadShareButton = document.getElementById("downloadShareButton");
+    const yearlyLimitedReminder = document.getElementById("yearlyLimitedReminder");
+    const yearlyTestResetButton = document.getElementById("yearlyTestResetButton");
+    const generalResultReminder = document.getElementById("generalResultReminder");
+
+    if(resultTitle){
+        resultTitle.innerText = yearlyMode ? getYearlyResultTitle() : "占卜結果";
+    }
+
+    if(resultStatusText){
+        if(yearlyMode){
+            resultStatusText.innerHTML = "你的年度流年已為你展開<br>RayTarot<br>將陪你看見一月至十二月的能量提醒";
+            resultStatusText.style.display = "block";
+        }else{
+            resultStatusText.innerHTML = "";
+            resultStatusText.style.display = "none";
+        }
+    }
+
+    if(yearlyLimitedReminder){
+        yearlyLimitedReminder.style.display = yearlyMode ? "block" : "none";
+    }
+
+    if(generalResultReminder){
+        generalResultReminder.style.display = yearlyMode ? "none" : "block";
+    }
+
+    if(downloadShareButton){
+        downloadShareButton.innerText = yearlyMode ? "📷 下載流年圖" : "📷 下載結果圖";
+    }
+
+    if(yearlyTestResetButton){
+        yearlyTestResetButton.style.display = (yearlyMode && YEARLY_CONFIG.testMode) ? "block" : "none";
+    }
+}
+
+
+// 畫面切換與公告
 function hideAllScreens(){
     document.querySelectorAll(".screen").forEach(screen=>{
         screen.classList.remove("active");
@@ -7074,15 +7473,18 @@ function hideAllScreens(){
 function showScreen(id){
     hideAllScreens();
     document.getElementById(id).classList.add("active");
+
+    if(id === "homeScreen"){
+        updateYearlyHomeEntry();
+    }
 }
 
 function closeNoticeModal(){
     document.getElementById("noticeModal").style.display = "none";
 }
 
-// ================= 牌面介紹功能 =================
 
-// ===== 牌面介紹牌義資料 開始 =====
+// 牌面介紹
 const tarotCardMeanings = {
     "愚者": {
         "keywords": "新的開始、自由、冒險、信任直覺",
@@ -7506,7 +7908,6 @@ function renderCardMeaningHTML(card){
         </div>
     `;
 }
-// ===== 牌面介紹牌義資料 結束 =====
 
 function getCardLibraryCategories(){
     return {
@@ -7552,9 +7953,7 @@ function renderCardLibraryCategory(categoryKey){
     currentLibraryCards = category.cards.map(card=>({
         ...card,
         reversed:false,
-        // ===== 牌面介紹放大時顯示牌義 開始 =====
         libraryMeaning:true
-        // ===== 牌面介紹放大時顯示牌義 結束 =====
     }));
 
     document.querySelectorAll("[data-card-category]").forEach(button=>{
@@ -7580,14 +7979,11 @@ function openCardLibraryModal(index){
     if(libraryCard){
     }
 
-    // ===== 牌面介紹改用專用放大牌義視窗 開始 =====
     currentLibraryModalIndex = index;
     renderLibraryCardModal();
     document.getElementById("libraryCardModal").style.display = "flex";
-    // ===== 牌面介紹改用專用放大牌義視窗 結束 =====
 }
 
-// ===== 牌面介紹專用放大牌義視窗功能 開始 =====
 function renderLibraryCardModal(){
     const card = currentLibraryCards[currentLibraryModalIndex];
     const img = document.getElementById("libraryModalImg");
@@ -7667,9 +8063,7 @@ function handleLibraryModalTouchEnd(event){
         prevLibraryModalCard();
     }
 }
-// ===== 牌面介紹專用放大牌義視窗功能 結束 =====
 
-// ===== 牌面介紹點擊保險綁定 開始 =====
 function initCardLibraryClickFix(){
     const grid = document.getElementById("cardLibraryGrid");
 
@@ -7704,11 +8098,9 @@ function initCardLibraryClickFix(){
 }
 
 initCardLibraryClickFix();
-// ===== 牌面介紹點擊保險綁定 結束 =====
 
 
-// ================= 今日運勢功能 =================
-
+// 今日運勢
 function startDailyFortune(){
 
     dailyMode = false;
@@ -7772,9 +8164,14 @@ function showDailyFortuneEmptyState(){
     document.getElementById("dailyCopyButton").style.display = "none";
 
     const dailyDownloadButton = document.getElementById("dailyDownloadButton");
+    const dailyReminderBox = document.getElementById("dailyReminderBox");
 
     if(dailyDownloadButton){
         dailyDownloadButton.style.display = "none";
+    }
+
+    if(dailyReminderBox){
+        dailyReminderBox.style.display = "none";
     }
 }
 
@@ -7814,6 +8211,7 @@ function showDailyFortuneResult(cardIndex,reversed,alreadyDrawn){
     const dailyResult = document.getElementById("dailyResult");
     const dailyCopyButton = document.getElementById("dailyCopyButton");
     const dailyDownloadButton = document.getElementById("dailyDownloadButton");
+    const dailyReminderBox = document.getElementById("dailyReminderBox");
 
     dailyEmptyState.style.display = "none";
     dailyResult.style.display = "block";
@@ -7821,6 +8219,10 @@ function showDailyFortuneResult(cardIndex,reversed,alreadyDrawn){
 
     if(dailyDownloadButton){
         dailyDownloadButton.style.display = "block";
+    }
+
+    if(dailyReminderBox){
+        dailyReminderBox.style.display = "block";
     }
 
     dailyResult.innerHTML =
@@ -7891,8 +8293,7 @@ ${card.name} ${saved.reversed ? "逆位" : "正位"}
 }
 
 
-// ===== 下載結果圖版型判斷 開始 =====
-
+// 分享圖片
 function getShareLayoutClass(cardCount){
     if(cardCount === 1){
         return "spread-1";
@@ -7917,20 +8318,8 @@ function getShareLayoutClass(cardCount){
     return "spread-many";
 }
 
-// ===== 下載結果圖版型判斷 結束 =====
 
-
-// ===== 分享圖片 inline 最高優先權尺寸修正 開始 =====
-
-/*
-===分享圖片 inline 最高優先權尺寸修正 開始===
-這一段 JavaScript 是用來強制修正分享圖片牌面過大的問題。
-前面只用 CSS 調整時，手機瀏覽器產生分享圖可能仍會吃到舊樣式或被其他 !important 樣式蓋過，導致牌面持續過大。
-這段會在 renderSharePoster() 產生分享圖內容後，以及 captureSharePoster() 截圖前，再用 inline important 直接寫入分享圖尺寸。
-inline important 的優先權高於外部 CSS，可以避免牌面再次被放大。
-這段只影響下載／分享圖片的隱藏模板，不會影響首頁、誕生故事、公告視窗、抽牌畫面、牌面介紹或一般結果頁。
-===分享圖片 inline 最高優先權尺寸修正 結束===
-*/
+// 分享圖片尺寸保護
 
 function setImportantStyle(element, property, value){
     if(!element){
@@ -7941,11 +8330,7 @@ function setImportantStyle(element, property, value){
 }
 
 function getForcedShareLayout(cardCount){
-    /*
-       下載圖標題框位置統一版：
-       所有牌陣的標題框都固定貼近 Ray Tarot 標誌下方，
-       只依牌數調整牌面大小與間距，不再讓標題框忽高忽低。
-    */
+    // 分享圖片標題位置
     if(cardCount === 1){
         return {
             content:{top:"200px", bottom:"330px", left:"100px", right:"100px"},
@@ -8170,9 +8555,6 @@ function forceSharePosterInlineSize(){
     });
 }
 
-// ===== 分享圖片 inline 最高優先權尺寸修正 結束 =====
-
-// ===== 下載結果圖精緻模板內容生成 開始 =====
 
 function renderSharePoster(data){
     const shareCard = document.getElementById("shareCard");
@@ -8278,9 +8660,6 @@ function captureSharePoster(filename){
     });
 }
 
-// ===== 下載結果圖精緻模板內容生成 結束 =====
-
-// ================= 今日運勢結果圖下載功能 =================
 
 function downloadDailyFortuneImage(){
     const saved = getSavedDailyFortune();
@@ -8315,11 +8694,13 @@ function downloadDailyFortuneImage(){
     }
 }
 
-// ================= 我要占卜與塔羅日記入口 =================
 
+// 一般占卜與塔羅日記
 function startDivination(){
 
     dailyMode = false;
+    yearlyMode = false;
+    yearlyResultLoaded = false;
     hasShuffled = false;
     selectedCards = [];
     shuffledDeck = [];
@@ -8336,6 +8717,8 @@ function startDivination(){
 function startDiary(){
 
     dailyMode = true;
+    yearlyMode = false;
+    yearlyResultLoaded = false;
     spreadType = 1;
     spreadKey = "single";
     hasShuffled = false;
@@ -8344,12 +8727,14 @@ function startDiary(){
 
 
     document.getElementById("userQuestion").value = "塔羅日記";
+    updateShuffleScreenText();
     showScreen("shuffleScreen");
 }
 
-// ================= 牌陣選擇功能 =================
 
 function chooseSpread(cardCount,key){
+    yearlyMode = false;
+    yearlyResultLoaded = false;
     spreadType = cardCount;
     spreadKey = key;
     hasShuffled = false;
@@ -8369,10 +8754,10 @@ function goToSpreadScreen(){
     }
 
 
+    updateShuffleScreenText();
     showScreen("shuffleScreen");
 }
 
-// ================= 洗牌功能 =================
 
 function shuffleDeck(){
     const deck = document.getElementById("deck");
@@ -8414,7 +8799,6 @@ function shuffleDeck(){
     },1800);
 }
 
-// ================= 前往選牌功能 =================
 
 function goToDrawScreen(){
     if(!hasShuffled){
@@ -8423,11 +8807,11 @@ function goToDrawScreen(){
     }
 
 
+    updateDrawScreenText();
     showScreen("drawScreen");
     startDraw();
 }
 
-// ================= 顯示牌背功能 =================
 
 function startDraw(){
     const area = document.getElementById("cardSelection");
@@ -8449,7 +8833,6 @@ function startDraw(){
     updateSelectedText();
 }
 
-// ================= 選牌功能 =================
 
 function pickCard(index,element){
     const card = shuffledDeck[index];
@@ -8481,19 +8864,33 @@ function pickCard(index,element){
     updateSelectedText();
 }
 
-// ================= 已選數量顯示 =================
 
 function updateSelectedText(){
     const selectedCount = document.getElementById("selectedCount");
+    const finishButton = document.getElementById("finishSelectionButton");
 
     if(selectedCount){
         selectedCount.innerText = `已選 ${selectedCards.length} / ${spreadType} 張`;
     }
+
+    if(finishButton){
+        if(yearlyMode){
+            const isComplete = selectedCards.length === spreadType;
+            finishButton.innerText = isComplete ? "查看年度結果" : "請先選滿 12 張";
+            finishButton.disabled = !isComplete;
+        }else{
+            finishButton.innerText = "選擇完成";
+            finishButton.disabled = false;
+        }
+    }
 }
 
-// ================= 牌位名稱設定 =================
 
 function getPositions(){
+    if(spreadKey === "yearly"){
+        return getYearlyPositions();
+    }
+
     if(spreadKey === "single"){
         return dailyMode ? ["📖 今日主題牌"] : ["答案"];
     }
@@ -8514,6 +8911,10 @@ function getPositions(){
 }
 
 function getSpreadName(){
+    if(yearlyMode || spreadKey === "yearly"){
+        return getYearlySpreadName();
+    }
+
     if(dailyMode){
         return "塔羅日記";
     }
@@ -8538,7 +8939,6 @@ function getSpreadName(){
 }
 
 
-
 function getCardTypeClass(card){
     if(card.image.includes("/c")){
         return "cups-card";
@@ -8559,7 +8959,6 @@ function getCardTypeClass(card){
     return "major-card";
 }
 
-// ================= 完成選牌功能 =================
 
 function finishSelection(){
     const needCards = spreadType;
@@ -8572,9 +8971,9 @@ function finishSelection(){
 
     showScreen("resultScreen");
     showResult();
+    saveYearlyFortune();
 }
 
-// ================= 顯示結果功能 =================
 
 function showResult(){
     const result = document.getElementById("result");
@@ -8611,10 +9010,10 @@ function showResult(){
     html += "</div>";
     result.innerHTML = html;
 
+    updateResultScreenState();
     showResultGuide();
 }
 
-// ================= 複製解讀內容功能 =================
 
 function copyReadingContent(){
     if(selectedCards.length === 0){
@@ -8623,9 +9022,47 @@ function copyReadingContent(){
     }
 
     const positions = getPositions();
-    const question = document.getElementById("userQuestion").value || getSpreadName();
+    let text = "";
 
-    let text =
+    if(yearlyMode || spreadKey === "yearly"){
+        text =
+`🔮 Ray Tarot｜${YEARLY_YEAR} 年度流年牌陣
+
+請以專業塔羅師角度，解讀我的 ${YEARLY_YEAR} 年度流年。
+
+牌陣說明：
+以下 12 張牌分別代表一月至十二月的年度能量。
+請除了逐月解釋之外，也綜合整體牌面，
+分析我這一年的感情、人際、工作、財運與重要提醒。
+
+流年牌卡：
+`;
+
+        selectedCards.forEach((card,index)=>{
+            text += `${positions[index]}：${card.name}｜${card.reversed ? "逆位" : "正位"}
+`;
+        });
+
+        text +=
+`
+請從以下方向解讀：
+
+1. 年度整體能量
+2. 上半年與下半年走勢
+3. 感情／人際關係
+4. 工作／學習發展
+5. 財運／資源狀況
+6. 需要特別注意的月份
+7. 適合行動、突破或做決定的月份
+8. 這一年最重要的課題
+9. 給我的年度建議
+10. 年度金句
+
+請用溫柔、清楚、適合日常參考的方式解讀。`;
+    }else{
+        const question = document.getElementById("userQuestion").value || getSpreadName();
+
+        text =
 `🔮 Ray Tarot｜${getSpreadName()}
 
 問題：
@@ -8633,19 +9070,20 @@ ${question}
 
 `;
 
-    selectedCards.forEach((card,index)=>{
-        text +=
+        selectedCards.forEach((card,index)=>{
+            text +=
 `${positions[index]}：
 ${card.name}
 ${card.reversed ? "逆位" : "正位"}
 
 `;
-    });
+        });
 
-    text +=
+        text +=
 `請以專業塔羅師角度，
 結合問題與牌陣，
 進行完整解讀。`;
+    }
 
     navigator.clipboard.writeText(text).then(()=>{
 
@@ -8655,13 +9093,14 @@ ${card.reversed ? "逆位" : "正位"}
     });
 }
 
-// ================= 重新開始功能 =================
 
 function restartReading(){
     selectedCards = [];
     shuffledDeck = [];
     hasShuffled = false;
     dailyMode = false;
+    yearlyMode = false;
+    yearlyResultLoaded = false;
     swipeHintShown = false;
     resultHintShown = false;
 
@@ -8679,12 +9118,16 @@ function restartReading(){
     showScreen("homeScreen");
 }
 
-// ================= 返回上一頁功能 =================
 
 function backFromShuffle(){
     hasShuffled = false;
     selectedCards = [];
     shuffledDeck = [];
+
+    if(yearlyMode){
+        showScreen("yearlyIntroScreen");
+        return;
+    }
 
     if(dailyMode){
         showScreen("homeScreen");
@@ -8703,11 +9146,18 @@ function backFromDraw(){
     }
 
     updateSelectedText();
+
+    if(yearlyMode){
+        updateShuffleScreenText();
+        showScreen("shuffleScreen");
+        return;
+    }
+
     showScreen("shuffleScreen");
 }
 
-// ================= 提醒視窗功能 =================
 
+// 共用視窗與結果工具
 function showWarning(message){
     document.getElementById("warningText").innerHTML = message;
     document.getElementById("warningModal").style.display = "flex";
@@ -8717,7 +9167,6 @@ function closeWarning(){
     document.getElementById("warningModal").style.display = "none";
 }
 
-// ================= 牌面放大功能 =================
 
 function openCardModal(index){
     openCardModalFromList(selectedCards,index);
@@ -8753,9 +9202,7 @@ function renderCardModal(){
     const modal = document.getElementById("cardModal");
     const img = document.getElementById("cardModalImg");
     const hint = document.getElementById("swipeHint");
-    // ===== 牌面介紹牌義元素 開始 =====
     const meaningBox = document.getElementById("cardModalMeaning");
-    // ===== 牌面介紹牌義元素 結束 =====
     const card = modalCards[currentModalIndex];
 
     if(!card){
@@ -8769,7 +9216,6 @@ function renderCardModal(){
     // 結果頁面仍會保留原本的正逆位顯示。
     img.classList.remove("reversed");
 
-    // ===== 牌面介紹放大後顯示牌義 開始 =====
     const isLibraryMeaning = card.libraryMeaning === true;
 
     modal.classList.toggle("library-meaning-mode",isLibraryMeaning);
@@ -8784,7 +9230,6 @@ function renderCardModal(){
             meaningBox.innerHTML = "";
         }
     }
-    // ===== 牌面介紹放大後顯示牌義 結束 =====
 
     modal.style.display = "flex";
 
@@ -8799,11 +9244,9 @@ function renderCardModal(){
 
     hint.style.display = "block";
 
-    // ===== 牌面介紹提示文字 開始 =====
     hint.innerText = isLibraryMeaning
         ? "⇠ 左右滑動切換牌面 ⇢"
         : "⇠ 滑動切換牌面 ⇢";
-    // ===== 牌面介紹提示文字 結束 =====
 
     if(!swipeHintShown){
         swipeHintShown = true;
@@ -8819,7 +9262,6 @@ function closeCardModal(){
 
     modal.style.display = "none";
 
-    // ===== 關閉放大視窗時清除牌義狀態 開始 =====
     modal.classList.remove("library-meaning-mode");
 
     const meaningBox = document.getElementById("cardModalMeaning");
@@ -8828,15 +9270,12 @@ function closeCardModal(){
         meaningBox.style.display = "none";
         meaningBox.innerHTML = "";
     }
-    // ===== 關閉放大視窗時清除牌義狀態 結束 =====
 }
 
 function handleTouchStart(event){
     touchStartX = event.touches[0].clientX;
 
-    // ===== 避免上下滑動牌義時誤觸左右切牌 開始 =====
     touchStartY = event.touches[0].clientY;
-    // ===== 避免上下滑動牌義時誤觸左右切牌 結束 =====
 }
 
 function handleTouchEnd(event){
@@ -8847,14 +9286,12 @@ function handleTouchEnd(event){
     const touchEndX = event.changedTouches[0].clientX;
     const distance = touchEndX - touchStartX;
 
-    // ===== 上下滑動看牌義時不要切換牌面 開始 =====
     const touchEndY = event.changedTouches[0].clientY;
     const verticalDistance = touchEndY - touchStartY;
 
     if(Math.abs(distance) < 50 || Math.abs(distance) < Math.abs(verticalDistance)){
         return;
     }
-    // ===== 上下滑動看牌義時不要切換牌面 結束 =====
 
     if(distance < 0){
         nextModalCard();
@@ -8891,7 +9328,6 @@ function prevModalCard(){
     renderCardModal();
 }
 
-// ================= 下載結果圖功能 =================
 
 function downloadShareImage(){
     if(selectedCards.length === 0){
@@ -8911,7 +9347,7 @@ function downloadShareImage(){
     }));
 
     const ok = renderSharePoster({
-        title:getSpreadName(),
+        title:(yearlyMode || spreadKey === "yearly") ? `${YEARLY_YEAR} 年度流年牌陣` : getSpreadName(),
         date:getTodayDisplayText(),
         question:question || "",
         cards:shareCards
@@ -8919,7 +9355,7 @@ function downloadShareImage(){
 
     if(ok){
 
-        captureSharePoster("RayTarot_Result.png");
+        captureSharePoster((yearlyMode || spreadKey === "yearly") ? getYearlyDownloadFilename() : "RayTarot_Result.png");
     }
 }
 
@@ -8965,7 +9401,6 @@ function closeImagePreview(){
     document.getElementById("imagePreviewModal").style.display = "none";
 }
 
-// ================= 結果滑動提醒功能 =================
 
 function showResultGuide(){
     if(resultHintShown){
@@ -8988,17 +9423,7 @@ function showResultGuide(){
 }
 
 
-// ===== Ray Tarot 誕生故事視窗功能 開始 =====
-
-/*
-===誕生故事彈窗開關功能 開始===
-這一段 JavaScript 是用來控制 Ray Tarot 誕生故事彈窗的開啟與關閉。
-openStoryModal() 會把 storyModal 顯示出來，closeStoryModal() 會把 storyModal 隱藏。
-handleStoryEntryKeydown() 讓故事入口支援鍵盤 Enter 或空白鍵開啟，手機點擊仍然以 HTML 內的直接開啟設定為主。
-這段只處理故事彈窗顯示狀態，不會影響抽牌、洗牌、牌面介紹分類、牌面放大或分享圖片功能。
-===誕生故事彈窗開關功能 結束===
-*/
-
+// Ray Tarot 誕生故事
 function openStoryModal(event){
     if(event){
         event.preventDefault();
@@ -9034,14 +9459,15 @@ function handleStoryEntryKeydown(event){
     }
 }
 
+updateYearlyHomeEntry();
+window.addEventListener("load", updateYearlyHomeEntry);
+
 window.openStoryModal = openStoryModal;
 window.closeStoryModal = closeStoryModal;
 window.handleStoryEntryKeydown = handleStoryEntryKeydown;
 
-// ===== Ray Tarot 誕生故事視窗功能 結束 =====
-
 </script>
-<!-- ================= 外部工具與主程式結束 ================= -->
+
 
 </body>
 </html>
